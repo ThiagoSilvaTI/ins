@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instituto Semeando Vidas</title>
+  <link rel="stylesheet" href="global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="topbar">
+    <span>📍 Maranhão, Brasil</span>
+    <span>
+      <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a> &nbsp;|&nbsp;
+      <a href="contato.html" onclick="navigate('contato')">Apoie nossa causa</a>
+    </span>
+  </div>
+
+  <header>
+    <a class="logo" href="#" onclick="navigate('home')" style="text-decoration: none;">
+      <div class="logo-isvi">
+        <div class="logo-isvi-mark">
+          <span class="isvi-text">ISVI</span>
+          <div class="isvi-divider"></div>
+        </div>
+        <div class="logo-isvi-text">
+          <span class="instituto-text">instituto</span>
+          <span class="semeando-text">semeando vidas</span>
+        </div>
+      </div>
+    </a>
+    <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav>
+      <a href="index.html">Início</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">
+          Sobre <span class="arrow">▼</span>
+        </button>
+        <div class="dropdown-content">
+          <a href="sobre.html">Quem Somos</a>
+          <a href="diretor.html">Fala do Presidente</a>
+          <a href="equipe.html">Nossa Equipe</a>
+          <a href="estatuto ISVI.pdf" target="_blank">Estatuto</a>
+        </div>
+      </div>
+      <a href="notícias.html">Notícias</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="apoiadores.html">Apoiadores</a>
+      <a href="contato.html" class="nav-cta">Contato</a>
+    </nav>
+  </header>
+
+  <div class="projetos-hero">
+    <div class="section-label" style="color:var(--gold-light)">O que fazemos</div>
+    <h1>Nossos Projetos</h1>
+    <p>Iniciativas concretas que transformam comunidades e salvam vidas através da prevenção, educação e apoio social.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Iniciativas ativas</div>
+    <h2 class="section-title">Projetos em andamento</h2>
+    <div class="projetos-grid">
+
+      <div class="projeto-card">
+        <div class="projeto-header">
+          <img src="https://www.image2url.com/r2/default/images/1783600034570-bc9a02fa-9a0f-4889-83c1-c45b7600879b.jpg" alt="Ciclo de Palestras Educativas" loading="lazy">
+          <div class="projeto-header-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-tag">Educação Preventiva</span>
+          <h3>Ciclo de Palestras Educativas</h3>
+          <p>Palestras itinerantes em escolas, centros comunitários e eventos públicos abordando prevenção ao uso de drogas, saúde mental e cidadania. Metodologia dinâmica com rodas de conversa e materiais didáticos.</p>
+          <div class="projeto-stats">
+            <div class="proj-stat"><div class="proj-stat-num">+200</div><div class="proj-stat-label">Palestras</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">+50</div><div class="proj-stat-label">Escolas</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">+5.000</div><div class="proj-stat-label">Jovens</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projeto-card">
+        <div class="projeto-header">
+          <img src="https://www.image2url.com/r2/default/images/1783600041271-4039aed8-1954-48d3-a8c7-96e135c79020.jpg" alt="Arte que Transforma" loading="lazy">
+          <div class="projeto-header-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-tag">Arte & Cultura</span>
+          <h3>Arte que Transforma</h3>
+          <p>Oficinas culturais, teatro, música e artes visuais utilizados como ferramentas de prevenção e inclusão social. A criatividade como antídoto para a vulnerabilidade e como forma de expressão saudável.</p>
+          <div class="projeto-stats">
+            <div class="proj-stat"><div class="proj-stat-num">+80</div><div class="proj-stat-label">Oficinas</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">+1.200</div><div class="proj-stat-label">Participantes</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">12</div><div class="proj-stat-label">Municípios</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projeto-card">
+        <div class="projeto-header">
+          <img src="https://www.image2url.com/r2/default/images/1783600406841-3f179213-1930-4e4c-a0f5-74e4847f765d.jpg" alt="Fortalecendo Famílias" loading="lazy">
+          <div class="projeto-header-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-tag">Família</span>
+          <h3>Fortalecendo Famílias</h3>
+          <p>Encontros e grupos de apoio voltados para pais, mães e responsáveis, fornecendo ferramentas para identificar sinais de risco e dialogar com adolescentes sobre drogas e saúde mental.</p>
+          <div class="projeto-stats">
+            <div class="proj-stat"><div class="proj-stat-num">+60</div><div class="proj-stat-label">Grupos</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">+900</div><div class="proj-stat-label">Famílias</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">8</div><div class="proj-stat-label">Cidades</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projeto-card">
+        <div class="projeto-header">
+          <img src="https://www.image2url.com/r2/default/images/1783600827991-1b7a658a-16bd-4832-9dc9-afbcce5515d7.jpg" alt="Mente Saudável" loading="lazy">
+          <div class="projeto-header-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-tag">Saúde Mental</span>
+          <h3>Mente Saudável</h3>
+          <p>Ações de apoio psicossocial e conscientização sobre saúde mental, oferecendo escuta ativa e encaminhamentos para serviços de saúde para jovens em situação de vulnerabilidade emocional.</p>
+          <div class="projeto-stats">
+            <div class="proj-stat"><div class="proj-stat-num">+300</div><div class="proj-stat-label">Atendimentos</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">5</div><div class="proj-stat-label">Profissionais</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">Gratuito</div><div class="proj-stat-label">Acesso</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projeto-card">
+        <div class="projeto-header">
+          <img src="https://www.image2url.com/r2/default/images/1783601201817-36b961b0-749a-48f9-803f-bf0a01f80c9b.jpg" alt="Intervenção em Áreas de Risco" loading="lazy">
+          <div class="projeto-header-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-tag">Ação Emergencial</span>
+          <h3>Intervenção em Áreas de Risco</h3>
+          <p>Atuação direta em bairros com altos índices de consumo de drogas, levando informação, apoio e recursos para comunidades que mais precisam de intervenção preventiva imediata.</p>
+          <div class="projeto-stats">
+            <div class="proj-stat"><div class="proj-stat-num">+30</div><div class="proj-stat-label">Bairros</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">+400</div><div class="proj-stat-label">Famílias</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">15</div><div class="proj-stat-label">Parceiros</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projeto-card">
+        <div class="projeto-header">
+          <img src="https://www.image2url.com/r2/default/images/1783601714602-c346bd6b-b013-4766-83dd-aeb26b8e03c0.jpg" alt="Formação de Multiplicadores" loading="lazy">
+          <div class="projeto-header-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-tag">Capacitação</span>
+          <h3>Formação de Multiplicadores</h3>
+          <p>Jovens que passaram pelas ações do projeto são capacitados para replicar o conhecimento em suas comunidades, gerando um efeito multiplicador de impacto e protagonismo juvenil.</p>
+          <div class="projeto-stats">
+            <div class="proj-stat"><div class="proj-stat-num">+120</div><div class="proj-stat-label">Formados</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">3x</div><div class="proj-stat-label">Alcance</div></div>
+            <div class="proj-stat"><div class="proj-stat-num">Anual</div><div class="proj-stat-label">Edição</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="impacto-section">
+    <div class="section" style="padding-top:0;padding-bottom:0">
+      <div class="section-label">Números que inspiram</div>
+      <h2 class="section-title">Nosso impacto em dados</h2>
+      <div class="impacto-grid">
+        <div class="impacto-card"><div class="impacto-num">5.000+</div><div class="impacto-label">Pessoas impactadas diretamente</div></div>
+        <div class="impacto-card"><div class="impacto-num">200+</div><div class="impacto-label">Ações e eventos realizados</div></div>
+        <div class="impacto-card"><div class="impacto-num">50+</div><div class="impacto-label">Escolas e centros atendidos</div></div>
+        <div class="impacto-card"><div class="impacto-num">10+</div><div class="impacto-label">Anos transformando vidas</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <h2>Quer apoiar nossos projetos?</h2>
+    <p>Sua parceria, doação ou voluntariado faz toda a diferença para continuarmos semeando.</p>
+    <a class="btn btn-dark" href="contato.html">Seja um apoiador</a>
+  </div>
+
+  <footer>
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="padding:0;margin-bottom:16px">
+            <div class="logo-icon"></div>
+            <div class="logo-text"><strong>Semeando Vidas</strong><span>Instituto — ASFUJEMA</span></div>
+          </div>
+          <p>Promovendo prevenção ao uso de drogas, educação e transformação social no Maranhão desde 2012. Cada semente plantada é uma vida transformada.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="notícias.html">Notícias</a>
+          <a href="projetos.html">Projetos</a>
+          <a href="apoiadores.html">Apoiadores</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div class="footer-col">
+          <h4>Projetos</h4>
+          <a href="projetos.html">Palestras Educativas</a>
+          <a href="projetos.html">Arte que Transforma</a>
+          <a href="projetos.html">Fortalecendo Famílias</a>
+          <a href="projetos.html">Mente Saudável</a>
+          <a href="projetos.html">Multiplicadores</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a>
+          <a href="https://asfujema.org.br" target="_blank">ASFUJEMA</a>
+          <a href="contato.html">Enviar mensagem</a>
+          <a href="contato.html">Seja voluntário</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Instituto Semeando Vidas — ASFUJEMA. Todos os direitos reservados.</span>
+        <span>Feito com pelo bem do Maranhão</span>
+      </div>
+    </div>
+  </footer>
+  <script src="global.js"></script>
+  <script src="emoji-replace.js"></script>
+</body>
+</html>

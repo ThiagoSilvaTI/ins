@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Nossa Equipe | Instituto Semeando Vidas</title>
+  <link rel="stylesheet" href="global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Página de equipe – estilos específicos e refinamentos */
+    .team-hero {
+      background: linear-gradient(145deg, var(--blue-dark) 0%, var(--green-dark) 100%);
+      padding: 80px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .team-hero::before {
+      content: "👥";
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      font-size: 220px;
+      opacity: 0.08;
+      transform: rotate(-8deg);
+    }
+    .team-hero::after {
+      content: "🌱";
+      position: absolute;
+      top: -50px;
+      right: -30px;
+      font-size: 200px;
+      opacity: 0.07;
+      transform: rotate(12deg);
+    }
+    .team-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 800;
+      color: white;
+      margin-bottom: 16px;
+      position: relative;
+      letter-spacing: -0.02em;
+    }
+    .team-hero h1 span {
+      background: linear-gradient(135deg, #FFD966, #FFB347);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .team-hero p {
+      color: rgba(255,255,255,0.9);
+      font-size: 18px;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .team-intro {
+      background: var(--white);
+      border-radius: 32px;
+      margin-top: -50px;
+      margin-bottom: 50px;
+      box-shadow: var(--shadow-lg);
+      padding: 40px 48px;
+      text-align: center;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 2;
+    }
+    .team-intro h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+    .team-intro p {
+      color: var(--gray);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    .team-flip-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin: 20px 0 60px;
+    }
+    /* Flip card aprimorado */
+    .flip-team-card {
+      background-color: transparent;
+      width: 100%;
+      aspect-ratio: 3 / 3.6;
+      perspective: 1600px;
+      cursor: pointer;
+    }
+    .flip-team-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+      border-radius: 28px;
+    }
+    .flip-team-card:hover .flip-team-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-front, .flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.2);
+    }
+    .flip-front {
+      background: linear-gradient(145deg, #f8fafc, #ffffff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+    }
+    .flip-front .member-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 0 12px 20px -8px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+    .flip-team-card:hover .flip-front .member-avatar {
+      transform: scale(1.02);
+    }
+    .flip-front h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+    .flip-front .cargo-front {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green);
+      background: var(--green-pale);
+      padding: 4px 14px;
+      border-radius: 40px;
+      display: inline-block;
+      margin-top: 5px;
+    }
+    .flip-back {
+      background: linear-gradient(145deg, var(--blue-dark), var(--green-dark));
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      color: white;
+      text-align: center;
+    }
+    .flip-back h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .flip-back .cargo-back {
+      font-size: 13px;
+      background: rgba(255,215,120,0.25);
+      backdrop-filter: blur(4px);
+      padding: 5px 12px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+      display: inline-block;
+      font-weight: 600;
+    }
+    .flip-back .bio {
+      font-size: 13px;
+      line-height: 1.6;
+      opacity: 0.9;
+      margin: 12px 0;
+    }
+    .flip-back .social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .flip-back .social-icons a {
+      background: rgba(255,255,255,0.2);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .flip-back .social-icons a:hover {
+      background: white;
+      color: var(--blue);
+      transform: translateY(-3px);
+    }
+    .leadership-badge {
+      background: linear-gradient(135deg, #FFD966, #FFB347);
+      color: #2c3e2f;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 30px;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 3;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .volunteer-section {
+      background: linear-gradient(135deg, var(--blue-pale), var(--green-pale));
+      border-radius: 48px;
+      padding: 50px 40px;
+      margin: 40px 0 60px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .volunteer-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: var(--blue-dark);
+    }
+    .volunteer-content p {
+      color: var(--gray);
+      max-width: 500px;
+      margin-top: 12px;
+    }
+    .btn-volunteer {
+      background: var(--blue);
+      color: white;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: 0.3s;
+      text-decoration: none;
+      box-shadow: var(--shadow-md);
+    }
+    .btn-volunteer:hover {
+      transform: translateY(-3px);
+      background: var(--green);
+      box-shadow: var(--shadow-lg);
+    }
+    @media (max-width: 1024px) {
+      .team-flip-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+      }
+      .team-hero {
+        padding: 60px 32px;
+      }
+      .team-intro {
+        margin: -30px 20px 40px;
+        padding: 32px 28px;
+      }
+    }
+    @media (max-width: 680px) {
+      .team-flip-container {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .volunteer-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .team-hero {
+        padding: 50px 20px;
+      }
+      .flip-front .member-avatar {
+        width: 110px;
+        height: 110px;
+      }
+    }
+    .empty-avatar {
+      background: linear-gradient(145deg, #dce6f0, #cbdbe2);
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      color: var(--blue);
+      margin-bottom: 20px;
+      box-shadow: 0 12px 20px -8px rgba(0,0,0,0.1);
+      border: 4px solid white;
+    }
+    .footer-margin {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <span>📍 Maranhão, Brasil</span>
+    <span>
+      <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a> &nbsp;|&nbsp;
+      <a href="contato.html">Apoie nossa causa</a>
+    </span>
+  </div>
+
+  <header>
+    <a class="logo" href="index.html" style="text-decoration: none;">
+      <div class="logo-isvi">
+        <div class="logo-isvi-mark">
+          <span class="isvi-text">ISVI</span>
+          <div class="isvi-divider"></div>
+        </div>
+        <div class="logo-isvi-text">
+          <span class="instituto-text">instituto</span>
+          <span class="semeando-text">semeando vidas</span>
+        </div>
+      </div>
+    </a>
+    <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav>
+      <a href="index.html">Início</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">Sobre <span class="arrow">▼</span></button>
+        <div class="dropdown-content">
+          <a href="sobre.html">Quem Somos</a>
+          <a href="diretor.html">Fala do Presidente</a>
+          <a href="equipe.html">Nossa Equipe</a>
+          <a href="estatuto ISVI.pdf" target="_blank">Estatuto</a>
+        </div>
+      </div>
+      <a href="notícias.html">Notícias</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="apoiadores.html">Apoiadores</a>
+      <a href="contato.html" class="nav-cta">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="team-hero">
+      <h1>Equipe que <span>transforma</span> realidades</h1>
+      <p>Pessoas comprometidas com a prevenção, acolhimento e esperança. Cada membro da nossa equipe semeia conhecimento, amor e oportunidades em cada ação.</p>
+    </section>
+
+    <div class="team-intro">
+      <h3>Coração do Semeando Vidas</h3>
+      <p>Nossa equipe é formada por profissionais, voluntários e líderes apaixonados pela causa. Unimos experiência, sensibilidade e força coletiva para levar informação, saúde e cidadania a milhares de crianças, jovens e famílias no Maranhão.</p>
+    </div>
+
+    <div class="section" style="padding-top: 0;">
+      <div class="team-flip-container" id="teamGrid">
+        <!-- Cards serão inseridos via JavaScript para facilitar manutenção -->
+      </div>
+
+      <!-- Seção de voluntariado dinâmica -->
+      <div class="volunteer-section">
+        <div class="volunteer-content">
+          <h3>Faça parte desse time</h3>
+          <p>Voluntários são essenciais para expandirmos nosso alcance. Se você tem talento, tempo ou quer contribuir de alguma forma, junte-se à nossa missão.</p>
+        </div>
+        <a href="contato.html" class="btn-volunteer"><i class="fas fa-hands-helping"></i> Quero ser voluntário</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="padding:0;margin-bottom:16px">
+            <div class="logo-icon"></div>
+            <div class="logo-text"><strong>Semeando Vidas</strong><span>Instituto — ASFUJEMA</span></div>
+          </div>
+          <p>Promovendo prevenção ao uso de drogas, educação e transformação social no Maranhão desde 2012. Cada semente plantada é uma vida transformada.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href=".html">Início</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="notícias.html">Notícias</a>
+          <a href="projetos.html">Projetos</a>
+          <a href="apoiadores.html">Apoiadores</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div class="footer-col">
+          <h4>Projetos</h4>
+          <a href="projetos.html">Palestras Educativas</a>
+          <a href="projetos.html">Arte que Transforma</a>
+          <a href="projetos.html">Fortalecendo Famílias</a>
+          <a href="projetos.html">Mente Saudável</a>
+          <a href="projetos.html">Multiplicadores</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a>
+          <a href="https://asfujema.org.br" target="_blank">ASFUJEMA</a>
+          <a href="contato.html">Enviar mensagem</a>
+          <a href="contato.html">Seja voluntário</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Instituto Semeando Vidas — ASFUJEMA. Todos os direitos reservados.</span>
+        <span>Feito com pelo bem do Maranhão</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dados completos da equipe (incluindo bio, redes sociais, imagem)
+    const teamMembers = [
+      {
+        id: 1,
+        name: "Nelsandro Barbosa",
+        role: "Presidente & Fundador",
+        bio: "Idealizador do Instituto Semeando Vidas, Sandro dedica sua vida à prevenção às drogas e à promoção da cidadania. Lidera articulações institucionais e fortalece parcerias estratégicas.",
+        image: "https://www.image2url.com/r2/default/images/1777837194453-2d09691b-b510-473d-a6b9-56a87de5e85c.png",
+        instagram: "https://instagram.com/semeandovidas.ma",
+        linkedin: "#",
+        email: "contato@asfujema.org.br"
+      },
+      {
+        id: 2,
+        name: "Felipe Cairé",
+        role: "Vice-Presidente",
+        bio: "Engajado na expansão do projeto, Felipe coordena ações comunitárias e fortalece a governança do instituto, garantindo impacto social positivo.",
+        image: "https://www.image2url.com/r2/default/images/1783564858310-2955a424-bc52-4a06-8758-ebffb9a5643b.png",
+        instagram: "https://instagram.com/semeandovidas.ma",
+        linkedin: "#",
+        email: "#"
+      },
+      {
+        id: 3,
+        name: "Safira Santos",
+        role: "Diretora Financeira",
+        bio: "Especialista em gestão de recursos, Safira assegura a transparência e sustentabilidade dos projetos, viabilizando cada ação transformadora.",
+        image: "https://www.image2url.com/r2/default/images/1783599623643-721b162e-77e0-479b-ac5f-599334929ecb.png",
+        instagram: "#",
+        linkedin: "#",
+        email: "#"
+      },
+      {
+        id: 4,
+        name: "Djanny Prado",
+        role: "Diretora Administrativa",
+        bio: "Responsável pela logística e organização, Djanny garante que cada palestra, evento e ação chegue às comunidades com excelência e acolhimento.",
+        image: "",
+        instagram: "#",
+        linkedin: "#",
+        email: "#"
+      },
+      {
+        id: 5,
+        name: "Francisco do Espírito Santo",
+        role: "Diretor Pedagógico",
+        bio: "Idealizador do Instituto Semeando Vidas, Sandro dedica sua vida à prevenção às drogas e à promoção da cidadania. Lidera articulações institucionais e fortalece parcerias estratégicas.",
+        image: "https://www.image2url.com/r2/default/images/1783565444291-2bd12f99-6d13-436f-b209-d389002c6284.png",
+        instagram: "https://instagram.com/semeandovidas.ma",
+        linkedin: "#",
+        email: "contato@asfujema.org.br"
+      },
+    ];
+    
+    // função auxiliar para gerar avatar padrão baseado na inicial
+    function getInitialsAvatar(name) {
+      const initial = name.charAt(0).toUpperCase();
+      return `<div class="empty-avatar"><span style="font-size: 68px; font-weight: 500;">${initial}</span></div>`;
+    }
+
+    function renderTeam() {
+      const container = document.getElementById('teamGrid');
+      if (!container) return;
+
+      let cardsHTML = '';
+      teamMembers.forEach(member => {
+        const hasImage = member.image && member.image.trim() !== '';
+        const avatarHTML = hasImage 
+          ? `<img class="member-avatar" src="${member.image}" alt="${member.name}">`
+          : getInitialsAvatar(member.name);
+        
+        // Ícones sociais disponíveis
+        let socialLinks = '';
+        if (member.instagram && member.instagram !== '#') {
+          socialLinks += `<a href="${member.instagram}" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>`;
+        }
+        if (member.linkedin && member.linkedin !== '#') {
+          socialLinks += `<a href="${member.linkedin}" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>`;
+        }
+        if (member.email && member.email !== '#') {
+          socialLinks += `<a href="mailto:${member.email}" aria-label="Email"><i class="fas fa-envelope"></i></a>`;
+        }
+        if (socialLinks === '') {
+          socialLinks = `<span style="font-size:12px; opacity:0.7;">conecte-se via instagram</span>`;
+        }
+
+        // Badge de liderança para presidente e vice
+        const leadershipBadge = (member.role.includes("Presidente") || member.role.includes("Vice-Presidente")) 
+          ? `<div class="leadership-badge"><i class="fas fa-star"></i> Liderança</div>` 
+          : '';
+
+        cardsHTML += `
+          <div class="flip-team-card">
+            ${leadershipBadge}
+            <div class="flip-team-inner">
+              <div class="flip-front">
+                ${avatarHTML}
+                <h3>${member.name}</h3>
+                <div class="cargo-front">${member.role}</div>
+              </div>
+              <div class="flip-back">
+                <h4>${member.name}</h4>
+                <div class="cargo-back">${member.role}</div>
+                <div class="bio">${member.bio}</div>
+                <div class="social-icons">
+                  ${socialLinks}
+                </div>
+                <div style="margin-top: 14px; font-size: 11px;"><i class="fas fa-hand-peace"></i> time Semeando Vidas</div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = cardsHTML;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTeam();
+      // Ativa dropdown em dispositivos móveis (caso precise, o global.js já cuida)
+      if (document.querySelectorAll('.dropdown-btn').length) {
+        const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        dropdownBtns.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              const parent = btn.closest('.dropdown');
+              parent.classList.toggle('active');
+            }
+          });
+        });
+      }
+    });
+  </script>
+  <script src="global.js"></script>
+</body>
+</html>

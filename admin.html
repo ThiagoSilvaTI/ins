@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Instituto Semeando Vidas</title>
+  <link rel="stylesheet" href="global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .admin-header {
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      padding: 40px;
+      border-radius: 28px;
+      color: white;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    
+    .admin-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    
+    .admin-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .admin-tab {
+      padding: 12px 24px;
+      background: none;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--gray);
+      cursor: pointer;
+      transition: all 0.3s;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .admin-tab.active {
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: white;
+    }
+    
+    .admin-tab:hover:not(.active) {
+      background: var(--blue-pale);
+      color: var(--blue);
+    }
+    
+    .admin-panel {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .admin-panel.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-group {
+      margin-bottom: 24px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(21,101,192,0.1);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .image-upload-area {
+      border: 2px dashed var(--border);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: var(--gray-light);
+      position: relative;
+    }
+    
+    .image-upload-area:hover {
+      border-color: var(--blue);
+      background: var(--blue-pale);
+    }
+    
+    .image-upload-area.dragover {
+      border-color: var(--green);
+      background: var(--green-pale);
+    }
+    
+    .image-upload-area .upload-icon {
+      font-size: 48px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    
+    .image-upload-area p {
+      color: var(--gray);
+      font-size: 14px;
+      margin: 0;
+    }
+    
+    .image-upload-area .upload-hint {
+      font-size: 12px;
+      color: #999;
+      margin-top: 8px;
+    }
+    
+    .image-upload-area input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    
+    .image-preview-container {
+      margin-top: 16px;
+      display: none;
+      position: relative;
+      max-width: 300px;
+    }
+    
+    .image-preview-container.show {
+      display: block;
+    }
+    
+    .image-preview-container img {
+      width: 100%;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      max-height: 200px;
+      object-fit: cover;
+    }
+    
+    .image-preview-container .remove-image-btn {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .image-preview-container .remove-image-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .image-url-option {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--gray);
+      flex-wrap: wrap;
+    }
+    
+    .image-url-option input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      min-width: 150px;
+    }
+    
+    .image-url-option input:focus {
+      border-color: var(--blue);
+      outline: none;
+    }
+    
+    .btn-submit {
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: white;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(21,101,192,0.3);
+    }
+    
+    .btn-submit.secondary {
+      background: var(--gray);
+    }
+    
+    .btn-submit.secondary:hover {
+      background: #5a6c7e;
+    }
+    
+    .news-list {
+      display: grid;
+      gap: 20px;
+    }
+    
+    .news-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+      transition: all 0.3s;
+    }
+    
+    .news-item:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateX(5px);
+    }
+    
+    .news-item-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--gray-light);
+    }
+    
+    .news-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .news-item-content {
+      flex: 1;
+    }
+    
+    .news-item-content h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: var(--blue);
+    }
+    
+    .news-item-content .news-meta {
+      font-size: 12px;
+      color: var(--gray);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .news-item-content p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    
+    .news-item-actions {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    
+    .btn-icon {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .btn-edit {
+      background: var(--blue-pale);
+      color: var(--blue);
+    }
+    
+    .btn-delete {
+      background: #fee2e2;
+      color: #dc3545;
+    }
+    
+    .btn-edit:hover, .btn-delete:hover {
+      transform: translateY(-2px);
+    }
+    
+    .login-container {
+      max-width: 400px;
+      margin: 100px auto;
+      background: var(--white);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+    }
+    
+    .login-container h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--blue);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .alert {
+      padding: 12px 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .alert.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+    
+    .alert.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+    
+    .icon-sm {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .icon-md {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .icon-lg {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .tag-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--blue-pale);
+      color: var(--blue);
+      padding: 2px 8px 2px 6px;
+      border-radius: 12px;
+      font-size: 11px;
+    }
+    
+    .tag-icon .icon {
+      width: 12px;
+      height: 12px;
+    }
+    
+    .news-meta .icon {
+      width: 14px;
+      height: 14px;
+    }
+    
+    .badge-local {
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 10px;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .news-item {
+        flex-direction: column;
+      }
+      
+      .news-item-image {
+        width: 100%;
+        height: 150px;
+      }
+      
+      .news-item-actions {
+        justify-content: flex-end;
+        margin-top: 10px;
+      }
+      
+      .image-upload-area {
+        padding: 20px;
+      }
+      
+      .admin-tab {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+      
+      .form-actions {
+        flex-direction: column;
+      }
+      
+      .form-actions .btn-submit {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .admin-header {
+        padding: 24px 16px;
+      }
+      
+      .admin-header h1 {
+        font-size: 28px;
+      }
+      
+      .admin-container {
+        padding: 20px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <span>
+      <svg class="icon icon-sm" viewBox="0 0 24 24">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+      Maranhão, Brasil
+    </span>
+    <span>
+      <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">
+        <svg class="icon icon-sm" viewBox="0 0 24 24">
+          <path d="M7.75 2h8.5C19.06 2 22 4.94 22 8.25v7.5C22 19.06 19.06 22 15.75 22h-8.5C4.94 22 2 19.06 2 15.75v-7.5C2 4.94 4.94 2 7.75 2zM17.5 5.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5S19 7.83 19 7s-.67-1.5-1.5-1.5zm-5.5 1C9.01 6.5 6.5 9.01 6.5 12s2.51 5.5 5.5 5.5 5.5-2.51 5.5-5.5-2.51-5.5-5.5-5.5zm0 2.75c1.52 0 2.75 1.23 2.75 2.75s-1.23 2.75-2.75 2.75-2.75-1.23-2.75-2.75 1.23-2.75 2.75-2.75z"/>
+        </svg>
+        Instagram
+      </a>
+      &nbsp;|&nbsp;
+      <a href="contato.html">
+        <svg class="icon icon-sm" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        Apoie nossa causa
+      </a>
+    </span>
+  </div>
+
+  <header>
+    <a class="logo" href="index.html" style="text-decoration: none;">
+      <div class="logo-isvi">
+        <div class="logo-isvi-mark">
+          <span class="isvi-text">ISVI</span>
+          <div class="isvi-divider"></div>
+        </div>
+        <div class="logo-isvi-text">
+          <span class="instituto-text">instituto</span>
+          <span class="semeando-text">semeando vidas</span>
+        </div>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Início</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">
+          Sobre <span class="arrow">▼</span>
+        </button>
+        <div class="dropdown-content">
+          <a href="sobre.html">Quem Somos</a>
+          <a href="equipe.html">Equipe</a>
+          <a href="estatuto.pdf" target="_blank">Estatuto</a>
+        </div>
+      </div>
+      <a href="notícias.html">Notícias</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="apoiadores.html">Apoiadores</a>
+      <a href="contato.html" class="nav-cta">Contato</a>
+    </nav>
+  </header>
+
+  <div id="loginPage" class="login-container">
+    <h2>
+      <svg class="icon icon-lg" viewBox="0 0 24 24">
+        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+      </svg>
+      Acesso Administrativo
+    </h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Usuário</label>
+        <input type="text" id="username" placeholder="Digite seu usuário" required>
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" id="password" placeholder="Digite sua senha" required>
+      </div>
+      <button type="submit" class="btn-submit" style="width: 100%; justify-content: center;">Entrar</button>
+    </form>
+  </div>
+
+  <div id="adminPanel" style="display: none;">
+    <div class="admin-container">
+      <div class="admin-header">
+        <h1>
+          <svg class="icon icon-lg" viewBox="0 0 24 24" style="fill: white; vertical-align: middle;">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 10H7v-2h7v2zm3-4H7V6h10v2z"/>
+          </svg>
+          Painel Administrativo
+        </h1>
+        <p>Gerencie as notícias do Instituto Semeando Vidas</p>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="add">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+          Adicionar Notícia
+        </button>
+        <button class="admin-tab" data-tab="list">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+          </svg>
+          Gerenciar Notícias
+        </button>
+      </div>
+
+      <div id="addPanel" class="admin-panel active">
+        <div id="formAlertContainer"></div>
+        <form id="newsForm" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Título da Notícia *</label>
+              <input type="text" id="newsTitle" placeholder="Digite o título" required>
+            </div>
+            <div class="form-group">
+              <label>Categoria *</label>
+              <select id="newsCategory" required>
+                <option value="">Selecione uma categoria</option>
+                <option value="educacao">📚 Educação</option>
+                <option value="prevencao">🛡️ Prevenção</option>
+                <option value="comunidade">🏘️ Comunidade</option>
+                <option value="eventos">🎉 Eventos</option>
+                <option value="parcerias">🤝 Parcerias</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Resumo da Notícia *</label>
+            <textarea id="newsSummary" rows="3" placeholder="Digite um resumo da notícia" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Conteúdo Completo *</label>
+            <textarea id="newsContent" rows="6" placeholder="Digite o conteúdo completo da notícia" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Imagem da Notícia</label>
+            
+            <div class="image-upload-area" id="uploadArea">
+              <span class="upload-icon">🖼️</span>
+              <p><strong>Toque para selecionar uma imagem</strong></p>
+              <p class="upload-hint">Suporte para JPG, PNG, GIF, WEBP (máx. 5MB)</p>
+              <input type="file" id="imageFileInput" accept="image/*" capture="environment">
+            </div>
+
+            <div class="image-preview-container" id="imagePreviewContainer">
+              <img id="previewImg" src="" alt="Pré-visualização da imagem">
+              <button type="button" class="remove-image-btn" id="removeImageBtn" title="Remover imagem">✕</button>
+            </div>
+
+            <div class="image-url-option">
+              <span>Ou insira uma URL:</span>
+              <input type="url" id="newsImageUrl" placeholder="https://exemplo.com/imagem.jpg">
+            </div>
+            <small style="color: var(--gray); display: block; margin-top: 6px;">Deixe em branco para usar ícone padrão</small>
+          </div>
+
+          <div class="form-group">
+            <label>Data (opcional)</label>
+            <input type="text" id="newsDate" placeholder="Ex: Março 2025">
+          </div>
+
+          <input type="hidden" id="imageBase64" value="">
+          <input type="hidden" id="editingNewsId" value="">
+
+          <div class="form-actions">
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <svg class="icon" viewBox="0 0 24 24" style="fill: white;">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              </svg>
+              <span id="submitBtnText">Publicar Notícia</span>
+            </button>
+            <button type="button" class="btn-submit secondary" id="cancelEditBtn" style="display: none;">
+              Cancelar Edição
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div id="listPanel" class="admin-panel">
+        <div id="newsList" class="news-list">
+          <p style="text-align: center; color: var(--gray);">Carregando notícias...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="padding:0;margin-bottom:16px">
+            <div class="logo-icon">
+              <svg class="icon icon-lg" viewBox="0 0 24 24" style="fill: #2e7d32;">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <div class="logo-text"><strong>Semeando Vidas</strong><span>Instituto — ASFUJEMA</span></div>
+          </div>
+          <p>Promovendo prevenção ao uso de drogas, educação e transformação social no Maranhão desde 2012.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="notícias.html">Notícias</a>
+          <a href="projetos.html">Projetos</a>
+          <a href="apoiadores.html">Apoiadores</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div class="footer-col">
+          <h4>Projetos</h4>
+          <a href="projetos.html">Palestras Educativas</a>
+          <a href="projetos.html">Arte que Transforma</a>
+          <a href="projetos.html">Fortalecendo Famílias</a>
+          <a href="projetos.html">Mente Saudável</a>
+          <a href="projetos.html">Multiplicadores</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a>
+          <a href="https://asfujema.org.br" target="_blank">ASFUJEMA</a>
+          <a href="contato.html">Enviar mensagem</a>
+          <a href="contato.html">Seja voluntário</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Instituto Semeando Vidas — ASFUJEMA. Todos os direitos reservados.</span>
+        <span>Feito com pelo bem do Maranhão</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ============================================
+    // ADMIN AUTHENTICATION
+    // ============================================
+    const ADMIN_USER = 'admin';
+    const ADMIN_PASS = 'admin123';
+    
+    let isEditing = false;
+    let editingNewsId = null;
+
+    // ============================================
+    // NEWS CRUD OPERATIONS
+    // ============================================
+    function loadNews() {
+      try {
+        const news = localStorage.getItem('institute_news');
+        return news ? JSON.parse(news) : [];
+      } catch (e) {
+        console.error('Erro ao carregar notícias:', e);
+        return [];
+      }
+    }
+    
+    function saveNews(news) {
+      localStorage.setItem('institute_news', JSON.stringify(news));
+      window.dispatchEvent(new Event('storage'));
+    }
+    
+    function getCategoryName(category) {
+      const categories = {
+        'educacao': '📚 Educação',
+        'prevencao': '🛡️ Prevenção',
+        'comunidade': '🏘️ Comunidade',
+        'eventos': '🎉 Eventos',
+        'parcerias': '🤝 Parcerias'
+      };
+      return categories[category] || category;
+    }
+    
+    function formatDate(dateStr) {
+      if (dateStr && dateStr !== 'undefined' && dateStr !== 'null') return dateStr;
+      const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+      const date = new Date();
+      return `${months[date.getMonth()]} ${date.getFullYear()}`;
+    }
+
+    // ============================================
+    // IMAGE HANDLING
+    // ============================================
+    function handleImageFile(file) {
+      if (!file) return;
+      
+      if (file.size > 5 * 1024 * 1024) {
+        showAlert('A imagem é muito grande! O tamanho máximo é 5MB.', 'error');
+        return;
+      }
+      
+      const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/heic', 'image/heif'];
+      if (!validTypes.includes(file.type) && !file.type.startsWith('image/')) {
+        showAlert('Formato de imagem não suportado. Use JPG, PNG, GIF ou WEBP.', 'error');
+        return;
+      }
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64 = e.target.result;
+        document.getElementById('imageBase64').value = base64;
+        document.getElementById('newsImageUrl').value = '';
+        showImagePreview(base64);
+        showAlert('Imagem carregada com sucesso!', 'success');
+      };
+      reader.onerror = function() {
+        showAlert('Erro ao ler a imagem. Tente novamente.', 'error');
+      };
+      reader.readAsDataURL(file);
+    }
+    
+    function showImagePreview(src) {
+      const container = document.getElementById('imagePreviewContainer');
+      const img = document.getElementById('previewImg');
+      img.src = src;
+      container.classList.add('show');
+    }
+    
+    function hideImagePreview() {
+      const container = document.getElementById('imagePreviewContainer');
+      container.classList.remove('show');
+      document.getElementById('previewImg').src = '';
+      document.getElementById('imageBase64').value = '';
+      document.getElementById('imageFileInput').value = '';
+    }
+    
+    function getImageData() {
+      const base64 = document.getElementById('imageBase64').value;
+      if (base64 && base64.startsWith('data:image')) {
+        return base64;
+      }
+      
+      const url = document.getElementById('newsImageUrl').value.trim();
+      if (url && url.startsWith('http')) {
+        return url;
+      }
+      
+      return null;
+    }
+
+    // ============================================
+    // DISPLAY NEWS LIST
+    // ============================================
+    function displayAdminNews() {
+      const newsList = document.getElementById('newsList');
+      const news = loadNews();
+      
+      if (news.length === 0) {
+        newsList.innerHTML = `
+          <div style="text-align: center; padding: 40px; color: var(--gray);">
+            <span style="font-size: 48px;">📰</span>
+            <p style="margin-top: 16px;">Nenhuma notícia cadastrada.</p>
+            <p style="font-size: 14px;">Clique em "Adicionar Notícia" para começar.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      newsList.innerHTML = news.map((item) => {
+        const hasImage = item.image && item.image.length > 0;
+        const isBase64 = hasImage && item.image.startsWith('data:image');
+        const imageSrc = hasImage ? item.image : 'https://via.placeholder.com/100x100?text=📰';
+        
+        return `
+          <div class="news-item" data-id="${item.id}">
+            <div class="news-item-image">
+              <img src="${imageSrc}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/100x100?text=📰'">
+            </div>
+            <div class="news-item-content">
+              <h3>${item.title}</h3>
+              <div class="news-meta">
+                <span class="tag-icon">
+                  <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H9v-2h2v2zm0-4H9V7h2v6z"/>
+                  </svg>
+                  ${getCategoryName(item.category)}
+                </span>
+                <span>📅 ${formatDate(item.date)}</span>
+                ${isBase64 ? '<span class="badge-local">📷 Imagem local</span>' : ''}
+                ${!hasImage ? '<span class="badge-local" style="background:#fff3e0;color:#e65100;">Sem imagem</span>' : ''}
+              </div>
+              <p>${(item.summary || '').substring(0, 120)}${(item.summary || '').length > 120 ? '...' : ''}</p>
+            </div>
+            <div class="news-item-actions">
+              <button class="btn-icon btn-edit" onclick="editNews(${item.id})">
+                <svg class="icon icon-sm" viewBox="0 0 24 24">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                </svg>
+                Editar
+              </button>
+              <button class="btn-icon btn-delete" onclick="deleteNews(${item.id})">
+                <svg class="icon icon-sm" viewBox="0 0 24 24">
+                  <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                </svg>
+                Excluir
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // ============================================
+    // NEWS CRUD FUNCTIONS
+    // ============================================
+    function addNews(newsItem) {
+      const news = loadNews();
+      const newNews = {
+        ...newsItem,
+        id: Date.now()
+      };
+      news.unshift(newNews);
+      saveNews(news);
+      return newNews;
+    }
+    
+    function updateNewsById(id, updatedData) {
+      const news = loadNews();
+      const index = news.findIndex(item => item.id === id);
+      if (index !== -1) {
+        news[index] = { ...news[index], ...updatedData };
+        saveNews(news);
+        return true;
+      }
+      return false;
+    }
+    
+    function deleteNewsById(id) {
+      if (!confirm('Tem certeza que deseja excluir esta notícia?')) return;
+      
+      const news = loadNews();
+      const filtered = news.filter(item => item.id !== id);
+      saveNews(filtered);
+      displayAdminNews();
+      showAlert('Notícia excluída com sucesso!', 'success');
+    }
+    
+    function getNewsById(id) {
+      const news = loadNews();
+      return news.find(item => item.id === id);
+    }
+
+    // ============================================
+    // EDIT FUNCTIONS
+    // ============================================
+    window.editNews = function(id) {
+      const item = getNewsById(id);
+      if (!item) {
+        showAlert('Notícia não encontrada!', 'error');
+        return;
+      }
+      
+      isEditing = true;
+      editingNewsId = id;
+      
+      document.getElementById('newsTitle').value = item.title || '';
+      document.getElementById('newsCategory').value = item.category || '';
+      document.getElementById('newsSummary').value = item.summary || '';
+      document.getElementById('newsContent').value = item.content || '';
+      document.getElementById('newsDate').value = item.date || '';
+      document.getElementById('editingNewsId').value = id;
+      
+      // Carregar imagem se existir
+      if (item.image && item.image.length > 0) {
+        document.getElementById('imageBase64').value = item.image;
+        document.getElementById('newsImageUrl').value = '';
+        showImagePreview(item.image);
+      } else {
+        hideImagePreview();
+        document.getElementById('newsImageUrl').value = '';
+      }
+      
+      document.getElementById('submitBtnText').textContent = 'Atualizar Notícia';
+      document.getElementById('cancelEditBtn').style.display = 'inline-flex';
+      
+      document.querySelector('[data-tab="add"]').click();
+      document.getElementById('addPanel').scrollIntoView({ behavior: 'smooth' });
+      
+      showAlert('Editando: ' + item.title, 'success');
+    };
+    
+    function cancelEdit() {
+      isEditing = false;
+      editingNewsId = null;
+      document.getElementById('editingNewsId').value = '';
+      document.getElementById('submitBtnText').textContent = 'Publicar Notícia';
+      document.getElementById('cancelEditBtn').style.display = 'none';
+      resetForm();
+      showAlert('Edição cancelada', 'success');
+    }
+    
+    function resetForm() {
+      document.getElementById('newsForm').reset();
+      document.getElementById('imageBase64').value = '';
+      document.getElementById('newsImageUrl').value = '';
+      document.getElementById('editingNewsId').value = '';
+      hideImagePreview();
+      isEditing = false;
+      editingNewsId = null;
+      document.getElementById('submitBtnText').textContent = 'Publicar Notícia';
+      document.getElementById('cancelEditBtn').style.display = 'none';
+    }
+
+    // ============================================
+    // ALERT SYSTEM
+    // ============================================
+    function showAlert(message, type = 'success') {
+      const container = document.getElementById('formAlertContainer');
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert ${type}`;
+      alertDiv.textContent = message;
+      alertDiv.style.cssText = `
+        padding: 12px 20px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        background: ${type === 'success' ? '#d4edda' : '#f8d7da'};
+        color: ${type === 'success' ? '#155724' : '#721c24'};
+        border: 1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'};
+        animation: fadeIn 0.3s ease;
+      `;
+      
+      container.innerHTML = '';
+      container.appendChild(alertDiv);
+      
+      setTimeout(() => {
+        alertDiv.style.opacity = '0';
+        alertDiv.style.transition = 'opacity 0.5s';
+        setTimeout(() => {
+          if (alertDiv.parentNode) alertDiv.remove();
+        }, 500);
+      }, 4000);
+    }
+
+    // ============================================
+    // FORM SUBMIT - CORRIGIDO
+    // ============================================
+    document.getElementById('newsForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const title = document.getElementById('newsTitle').value.trim();
+      const category = document.getElementById('newsCategory').value;
+      const summary = document.getElementById('newsSummary').value.trim();
+      const content = document.getElementById('newsContent').value.trim();
+      const date = document.getElementById('newsDate').value.trim() || formatDate(new Date());
+      const image = getImageData(); // Pega a imagem atual
+      const editingId = document.getElementById('editingNewsId').value;
+      
+      if (!title || !category || !summary) {
+        showAlert('Por favor, preencha todos os campos obrigatórios!', 'error');
+        return;
+      }
+      
+      // CONSTRUIR O OBJETO COM A IMAGEM
+      const newsData = {
+        title: title,
+        category: category,
+        summary: summary,
+        content: content || summary,
+        date: date,
+        image: image || '' // Se não tiver imagem, salva vazio
+      };
+      
+      console.log('📝 Salvando notícia com imagem:', image ? '✅ Tem imagem' : '❌ Sem imagem');
+      
+      if (editingId) {
+        const success = updateNewsById(parseInt(editingId), newsData);
+        if (success) {
+          showAlert('Notícia atualizada com sucesso!', 'success');
+          resetForm();
+          displayAdminNews();
+          document.querySelector('[data-tab="list"]').click();
+        } else {
+          showAlert('Erro ao atualizar notícia!', 'error');
+        }
+      } else {
+        addNews(newsData);
+        showAlert('Notícia publicada com sucesso!', 'success');
+        resetForm();
+        displayAdminNews();
+        document.querySelector('[data-tab="list"]').click();
+      }
+    });
+
+    // ============================================
+    // DELETE NEWS (global)
+    // ============================================
+    window.deleteNews = function(id) {
+      deleteNewsById(id);
+    };
+
+    // ============================================
+    // IMAGE UPLOAD EVENTS
+    // ============================================
+    document.getElementById('imageFileInput').addEventListener('change', function(e) {
+      if (this.files && this.files[0]) {
+        handleImageFile(this.files[0]);
+      }
+    });
+    
+    document.getElementById('newsImageUrl').addEventListener('input', function(e) {
+      const url = this.value.trim();
+      if (url && url.startsWith('http')) {
+        try {
+          new URL(url);
+          document.getElementById('imageBase64').value = '';
+          document.getElementById('imageFileInput').value = '';
+          showImagePreview(url);
+          showAlert('URL da imagem carregada!', 'success');
+        } catch {
+          // URL inválida
+        }
+      } else if (!url) {
+        const base64 = document.getElementById('imageBase64').value;
+        if (!base64) {
+          hideImagePreview();
+        }
+      }
+    });
+    
+    document.getElementById('removeImageBtn').addEventListener('click', function() {
+      hideImagePreview();
+      document.getElementById('newsImageUrl').value = '';
+      showAlert('Imagem removida', 'success');
+    });
+    
+    const uploadArea = document.getElementById('uploadArea');
+    uploadArea.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      this.classList.add('dragover');
+    });
+    
+    uploadArea.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      this.classList.remove('dragover');
+    });
+    
+    uploadArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      this.classList.remove('dragover');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handleImageFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    document.getElementById('cancelEditBtn').addEventListener('click', cancelEdit);
+
+    // ============================================
+    // TAB SWITCHING
+    // ============================================
+    document.querySelectorAll('.admin-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        const target = this.dataset.tab;
+        
+        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        
+        document.querySelectorAll('.admin-panel').forEach(panel => panel.classList.remove('active'));
+        document.getElementById(`${target}Panel`).classList.add('active');
+        
+        if (target === 'list') {
+          displayAdminNews();
+        }
+      });
+    });
+
+    // ============================================
+    // LOGIN
+    // ============================================
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      if (username === ADMIN_USER && password === ADMIN_PASS) {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        displayAdminNews();
+        showAlert('Bem-vindo ao painel administrativo!', 'success');
+      } else {
+        showAlert('Usuário ou senha incorretos!', 'error');
+      }
+    });
+
+    // ============================================
+    // STORAGE SYNC
+    // ============================================
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'institute_news') {
+        if (document.getElementById('listPanel').classList.contains('active')) {
+          displayAdminNews();
+        }
+      }
+    });
+
+    console.log('📰 Admin panel carregado com correção de imagens!');
+  </script>
+</body>
+</html>

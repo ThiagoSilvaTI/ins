@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instituto Semeando Vidas</title>
+  <link rel="stylesheet" href="global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="topbar">
+  <span>📍 Maranhão, Brasil</span>
+  <span>
+    <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a> &nbsp;|&nbsp;
+    <a href="contato.html" onclick="navigate('contato')">Apoie nossa causa</a>
+  </span>
+</div>
+
+<header>
+  <a class="logo" href="#" onclick="navigate('home')" style="text-decoration: none;">
+  <div class="logo-isvi">
+    <div class="logo-isvi-mark">
+      <span class="isvi-text">ISVI</span>
+      <div class="isvi-divider"></div>
+    </div>
+    <div class="logo-isvi-text">
+      <span class="instituto-text">instituto</span>
+      <span class="semeando-text">semeando vidas</span>
+    </div>
+  </div>
+</a>
+  <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav>
+  <a href="index.html">Início</a>
+  <div class="dropdown">
+    <button class="dropdown-btn">
+      Sobre <span class="arrow">▼</span>
+    </button>
+    <div class="dropdown-content">
+      <a href="sobre.html">Quem Somos</a>
+      <a href="equipe.html">Nossa Equipe</a>
+      <a href="diretor.html">Fala do Presidente</a>
+      <a href="estatuto ISVI.pdf" target="_blank">Estatuto</a>
+    </div>
+  </div>
+  <a href="notícias.html">Notícias</a>
+  <a href="projetos.html">Projetos</a>
+  <a href="apoiadores.html">Apoiadores</a>
+  <a href="contato.html" class="nav-cta">Contato</a>
+</nav>
+</header>
+
+    <div class="contato-hero-section">
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="section-label">Fale conosco</div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,48px);margin-bottom:12px;color:var(--dark)">Entre em contato</h1>
+      <p style="color:var(--gray);font-size:17px;padding-bottom:40px">Estamos aqui para responder suas dúvidas, receber parcerias e acolher novos voluntários.</p>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:50px">
+    <div class="contato-layout">
+      <div class="contato-info">
+        <h2>Vamos conversar?</h2>
+        <p>Se você quer apoiar o projeto, fazer uma parceria institucional, ser voluntário ou simplesmente saber mais sobre nosso trabalho, entre em contato. Respondemos em até 48 horas.</p>
+
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div class="info-text">
+            <h4>Endereço</h4>
+            <p>São Luís, Maranhão — Brasil</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"></div>
+          <div class="info-text">
+            <h4>Instagram</h4>
+            <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">@semeandovidas.ma</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"></div>
+          <div class="info-text">
+            <h4>Site da ASFUJEMA</h4>
+            <a href="https://asfujema.org.br" target="_blank">asfujema.org.br</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"></div>
+          <div class="info-text">
+            <h4>Atendimento</h4>
+            <p>Segunda a Sexta, das 8h às 17h</p>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:14px">Redes Sociais</h4>
+          <div class="social-links">
+            <a class="social-btn" href="https://www.instagram.com/semeandovidas.ma/" target="_blank">📸</a>
+            <a class="social-btn" href="#" target="_blank"></a>
+            <a class="social-btn" href="#" target="_blank"></a>
+            <a class="social-btn" href="#" target="_blank"></a>
+          </div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,var(--green),#0a3520);border-radius:18px;padding:28px;margin-top:36px;color:white">
+          <h3 style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:10px">Quero ser voluntário</h3>
+          <p style="font-size:14px;opacity:.8;line-height:1.65">Você tem habilidades para oferecer? Seja educador, psicólogo, artista, comunicador ou simplesmente alguém disposto a ajudar — sua contribuição é bem-vinda!</p>
+        </div>
+      </div>
+
+      <div class="contato-form">
+        <h3>Envie uma mensagem</h3>
+        <p>Preencha o formulário e entraremos em contato em breve.</p>
+        <div class="form-row">
+          <div class="form-group"><label>Nome completo *</label><input type="text" id="nome" placeholder="Seu nome"></div>
+          <div class="form-group"><label>E-mail *</label><input type="email" id="email" placeholder="seu@email.com"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Telefone</label><input type="tel" id="telefone" placeholder="(98) 99999-9999"></div>
+          <div class="form-group">
+            <label>Assunto *</label>
+            <select id="assunto">
+              <option value="">Selecione...</option>
+              <option>Quero ser voluntário</option>
+              <option>Proposta de parceria</option>
+              <option>Solicitação de palestra</option>
+              <option>Doação</option>
+              <option>Imprensa / Mídia</option>
+              <option>Outros</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Organização / Escola (opcional)</label><input type="text" id="organizacao" placeholder="Nome da instituição"></div>
+        <div class="form-group"><label>Mensagem *</label><textarea id="mensagem" placeholder="Conte-nos como podemos ajudar ou como você deseja contribuir..."></textarea></div>
+        <button class="btn btn-green" type="button" onclick="enviarWhats()">Enviar mensagem </button>
+      </div>
+    </div>
+        <div class="mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63774.93028874317!2d-44.3783048783203!3d-2.5287257999999877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7f68edd30a47a1d%3A0x8e0588d077d24e87!2sASFUJEMA%20Associa%C3%A7%C3%A3o%20dos%20Funcion%C3%A1rios%20da%20Justi%C3%A7a%20do%20Estado%20do%20Maranh%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1772981612882!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      <span class="nome" style="font: size 20px">Instituto Semeando Vidas — ASFUJEMA</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="padding:0;margin-bottom:16px">
+          <div class="logo-icon"></div>
+          <div class="logo-text"><strong>Semeando Vidas</strong><span>Instituto — ASFUJEMA</span></div>
+        </div>
+        <p>Promovendo prevenção ao uso de drogas, educação e transformação social no Maranhão desde 2012. Cada semente plantada é uma vida transformada.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <a href="index.html">Início</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="notícias.html">Notícias</a>
+    <a href="projetos.html">Projetos</a>
+    <a href="apoiadores.html">Apoiadores</a>
+    <a href="contato.html">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h4>Projetos</h4>
+        <a href="projetos.html">Palestras Educativas</a>
+        <a href="projetos.html">Arte que Transforma</a>
+        <a href="projetos.html">Fortalecendo Famílias</a>
+        <a href="projetos.html">Mente Saudável</a>
+        <a href="projetos.html">Multiplicadores</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a>
+        <a href="https://asfujema.org.br" target="_blank">ASFUJEMA</a>
+        <a href="contato.html">Enviar mensagem</a>
+        <a href="contato.html">Seja voluntário</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Instituto Semeando Vidas — ASFUJEMA. Todos os direitos reservados.</span>
+      <span>Feito com pelo bem do Maranhão</span>
+    </div>
+  </div>
+</footer>
+<script src="global.js"></script>
+  <script src="emoji-replace.js"></script>
+</body>
+</html>
