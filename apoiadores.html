@@ -3,62 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instituto Semeando Vidas</title>
+    <title>Instituto Semeando Vidas - Apoiadores</title>
     <link rel="stylesheet" href="global.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .icon-sm { width: 16px; height: 16px; display: inline-block; vertical-align: middle; flex-shrink: 0; }
+        .icon-md { width: 20px; height: 20px; display: inline-block; vertical-align: middle; flex-shrink: 0; }
+        .icon-lg { width: 28px; height: 28px; display: inline-block; vertical-align: middle; flex-shrink: 0; }
+        .topbar .icon-sm { margin-right: 4px; }
+        .topbar a, .topbar span { display: inline-flex; align-items: center; gap: 4px; }
+        .tier-badge { display: inline-flex; align-items: center; gap: 8px; }
+        .strip-link { display: inline-flex; align-items: center; gap: 6px; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; }
+        .apoiador-cta-btns .btn { display: inline-flex; align-items: center; gap: 10px; }
+        .interlocutor-card .logo-card-name { display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .logo-card .logo-card-name { display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .badge-destaque { display: inline-flex; align-items: center; gap: 4px; }
+        .tier-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+        .tier-line { flex: 1; height: 2px; background: linear-gradient(90deg, var(--border), transparent); }
+        .tier-badge { padding: 8px 20px; border-radius: 40px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+        .tier-ouro { background: linear-gradient(135deg, var(--green), var(--green-light)); color: white; }
+        .tier-prata { background: linear-gradient(135deg, var(--blue), var(--green)); color: white; }
+        .apoiadores-tier-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .apoiadores-tier-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+        .logo-card { background: var(--white); border: 2px solid var(--border); border-radius: var(--radius-sm); padding: 20px 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; transition: all var(--transition); min-height: 100px; box-shadow: var(--shadow-sm); }
+        .logo-card:hover { border-color: var(--blue); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+        .logo-card img { max-width: 100%; max-height: 50px; object-fit: contain; filter: grayscale(20%); transition: all var(--transition); }
+        .logo-card:hover img { filter: grayscale(0%); }
+        .logo-card-name { font-size: 11px; color: var(--gray); text-align: center; font-weight: 600; line-height: 1.3; }
+        .interlocutor-card { background: linear-gradient(135deg, var(--white), var(--blue-pale)); border: 3px solid var(--blue); padding: 28px 32px; max-width: 350px; }
+        .interlocutor-card .logo-card-name { color: var(--blue); font-size: 16px; font-weight: 700; }
+        .apoiador-cta { background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%); border-radius: var(--radius); padding: 40px 32px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 32px; margin-top: 50px; }
+        .apoiador-cta h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: white; margin-bottom: 12px; }
+        .apoiador-cta p { opacity: 0.9; font-size: 15px; line-height: 1.6; color: white; max-width: 520px; }
+        .apoiador-cta-btns { display: flex; flex-direction: column; gap: 12px; min-width: 180px; }
+        .btn-white { background: white; color: var(--blue); font-weight: 700; padding: 14px 32px; border-radius: 40px; font-size: 15px; border: none; transition: all var(--transition); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+        .btn-outline-white { background: transparent; border: 2px solid rgba(255,255,255,0.6); color: white; padding: 14px 32px; border-radius: 40px; font-size: 15px; font-weight: 600; transition: all var(--transition); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-outline-white:hover { border-color: white; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+        @media (max-width: 992px) { .apoiadores-tier-grid-4 { grid-template-columns: repeat(3, 1fr); } .apoiadores-tier-grid-5 { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 600px) { .apoiadores-tier-grid-4 { grid-template-columns: repeat(2, 1fr); } .apoiadores-tier-grid-5 { grid-template-columns: repeat(2, 1fr); } .logo-card { min-height: 80px; padding: 14px 10px; } .logo-card img { max-height: 40px; } .apoiador-cta { grid-template-columns: 1fr; text-align: center; padding: 32px 20px; } .apoiador-cta p { max-width: 100%; } .apoiador-cta-btns { flex-direction: row; justify-content: center; flex-wrap: wrap; } }
+        @media (max-width: 480px) { .apoiador-cta-btns { flex-direction: column; align-items: center; } .apoiador-cta h3 { font-size: 22px; } }
+    </style>
 </head>
 <body>
 <div class="topbar">
-  <span>📍 Maranhão, Brasil</span>
-  <span>
-    <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a> &nbsp;|&nbsp;
-    <a href="contato.html" onclick="navigate('contato')">Apoie nossa causa</a>
-  </span>
+    <span>
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        Maranhão, Brasil
+    </span>
+    <span>
+        <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.75 2h8.5C19.06 2 22 4.94 22 8.25v7.5C22 19.06 19.06 22 15.75 22h-8.5C4.94 22 2 19.06 2 15.75v-7.5C2 4.94 4.94 2 7.75 2zM17.5 5.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5S19 7.83 19 7s-.67-1.5-1.5-1.5zm-5.5 1C9.01 6.5 6.5 9.01 6.5 12s2.51 5.5 5.5 5.5 5.5-2.51 5.5-5.5-2.51-5.5-5.5-5.5zm0 2.75c1.52 0 2.75 1.23 2.75 2.75s-1.23 2.75-2.75 2.75-2.75-1.23-2.75-2.75 1.23-2.75 2.75-2.75z"/>
+            </svg>
+            Instagram
+        </a>
+        &nbsp;|&nbsp;
+        <a href="contato.html" onclick="navigate('contato')">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Apoie nossa causa
+        </a>
+    </span>
 </div>
+
 <header>
-  <a class="logo" href="#" onclick="navigate('home')" style="text-decoration: none;">
-  <div class="logo-isvi">
-    <div class="logo-isvi-mark">
-      <span class="isvi-text">ISVI</span>
-      <div class="isvi-divider"></div>
-    </div>
-    <div class="logo-isvi-text">
-      <span class="instituto-text">instituto</span>
-      <span class="semeando-text">semeando vidas</span>
-    </div>
-  </div>
-</a>
-  <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-  <nav>
-  <a href="index.html">Início</a>
-  <div class="dropdown">
-    <button class="dropdown-btn">
-      Sobre <span class="arrow">▼</span>
-    </button>
-    <div class="dropdown-content">
-      <a href="sobre.html">Quem Somos</a>
-      <a href="equipe.html">Nossa Equipe</a>
-      <a href="diretor.html">Fala do Presidente</a>
-      <a href="estatuto ISVI.pdf" target="_blank">Estatuto</a>
-    </div>
-  </div>
-  <a href="notícias.html">Notícias</a>
-  <a href="projetos.html">Projetos</a>
-  <a href="apoiadores.html">Apoiadores</a>
-  <a href="contato.html" class="nav-cta">Contato</a>
-</nav>
+    <a class="logo" href="#" onclick="navigate('home')" style="text-decoration: none;">
+        <div class="logo-isvi">
+            <div class="logo-isvi-mark">
+                <span class="isvi-text">ISVI</span>
+                <div class="isvi-divider"></div>
+            </div>
+            <div class="logo-isvi-text">
+                <span class="instituto-text">instituto</span>
+                <span class="semeando-text">semeando vidas</span>
+            </div>
+        </div>
+    </a>
+    <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav>
+        <a href="index.html">Início</a>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                Sobre <span class="arrow">▼</span>
+            </button>
+            <div class="dropdown-content">
+                <a href="sobre.html">Quem Somos</a>
+                <a href="equipe.html">Nossa Equipe</a>
+                <a href="diretor.html">Fala do Presidente</a>
+                <a href="estatuto ISVI.pdf" target="_blank">Estatuto</a>
+            </div>
+        </div>
+        <a href="notícias.html">Notícias</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="apoiadores.html">Apoiadores</a>
+        <a href="contato.html" class="nav-cta">Contato</a>
+    </nav>
 </header>
 
-  <div class="apoiadores-hero">
-    <div class="section-label" style="color:var(--gold-light);position:relative">Gratidão e parceria</div>
+<div class="apoiadores-hero">
+    <div class="section-label" style="color:var(--gold-light);position:relative">
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:6px;">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        Gratidão e parceria
+    </div>
     <h1>Nossos Apoiadores</h1>
     <p>Empresas e instituições que acreditam no poder da prevenção e investem na transformação da nossa sociedade. Juntos somos mais fortes.</p>
-  </div>
+</div>
 
-  <div class="section">
-
-    <!-- ASFUJEMA - Institutional Interlocutor -->
-    <div class="interlocutor-section" style="margin-bottom: 60px;">
+<div class="section">
+<div class="interlocutor-section" style="margin-bottom: 60px;">
       <div class="tier-header" style="justify-content: center; margin-bottom: 30px;">
         <div class="tier-line"></div>
         <div class="tier-badge" style="background: linear-gradient(135deg, var(--green), var(--green-light)); color: white;">
@@ -119,60 +178,75 @@
 
     <!-- CTA para novos apoiadores -->
     <div class="apoiador-cta">
-      <div>
-        <h3>Sua empresa pode fazer parte disso </h3>
-        <p>Apoiar o Instituto Semeando Vidas é investir em comunidades mais saudáveis, em jovens com futuro e em um Maranhão livre das drogas. Sua marca ao lado de uma causa que transforma vidas — entre em contato e saiba como participar.</p>
-      </div>
-      <div class="apoiador-cta-btns">
-        <a class="btn btn-white" href="contato.html">Quero ser apoiador</a>
-        <a class="btn btn-outline-white" href="sobre.html">Saiba mais sobre nós</a>
-      </div>
+        <div>
+            <h3>Sua empresa pode fazer parte disso</h3>
+            <p>Apoiar o Instituto Semeando Vidas é investir em comunidades mais saudáveis, em jovens com futuro e em um Maranhão livre das drogas. Sua marca ao lado de uma causa que transforma vidas — entre em contato e saiba como participar.</p>
+        </div>
+        <div class="apoiador-cta-btns">
+            <a class="btn-white" href="contato.html">
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                Quero ser apoiador
+            </a>
+            <a class="btn-outline-white" href="sobre.html">
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+                Saiba mais sobre nós
+            </a>
+        </div>
     </div>
-  </div>
 </div>
 
-<footer>
-  <div style="max-width:1200px;margin:0 auto">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo" style="padding:0;margin-bottom:16px">
-          <div class="logo-icon"></div>
-          <div class="logo-text"><strong>Semeando Vidas</strong><span>Instituto — ASFUJEMA</span></div>
+
+  <footer>
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="padding:0;margin-bottom:16px">
+            <div class="logo-icon">
+              <svg class="icon icon-lg" viewBox="0 0 24 24" style="fill: #2e7d32;">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <div class="logo-text"><strong>Semeando Vidas</strong><span>Instituto — ASFUJEMA</span></div>
+          </div>
+          <p>Promovendo prevenção ao uso de drogas, educação e transformação social no Maranhão desde 2012.</p>
         </div>
-        <p>Promovendo prevenção ao uso de drogas, educação e transformação social no Maranhão desde 2012. Cada semente plantada é uma vida transformada.</p>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="notícias.html">Notícias</a>
+          <a href="projetos.html">Projetos</a>
+          <a href="apoiadores.html">Apoiadores</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div class="footer-col">
+          <h4>Projetos</h4>
+          <a href="projetos.html">Palestras Educativas</a>
+          <a href="projetos.html">Arte que Transforma</a>
+          <a href="projetos.html">Fortalecendo Famílias</a>
+          <a href="projetos.html">Mente Saudável</a>
+          <a href="projetos.html">Multiplicadores</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a>
+          <a href="https://asfujema.org.br" target="_blank">ASFUJEMA</a>
+          <a href="contato.html">Enviar mensagem</a>
+          <a href="contato.html">Seja voluntário</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Navegação</h4>
-        <a href="index.html">Início</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="notícias.html">Notícias</a>
-    <a href="projetos.html">Projetos</a>
-    <a href="apoiadores.html">Apoiadores</a>
-    <a href="contato.html">Contato</a>
-      </div>
-      <div class="footer-col">
-        <h4>Projetos</h4>
-        <a href="projetos.html">Palestras Educativas</a>
-        <a href="projetos.html">Arte que Transforma</a>
-        <a href="projetos.html">Fortalecendo Famílias</a>
-        <a href="projetos.html">Mente Saudável</a>
-        <a href="projetos.html">Multiplicadores</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contato</h4>
-        <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a>
-        <a href="https://asfujema.org.br" target="_blank">ASFUJEMA</a>
-        <a href="contato.html">Enviar mensagem</a>
-        <a href="contato.html">Seja voluntário</a>
+      <div class="footer-bottom">
+        <span>© 2025 Instituto Semeando Vidas — ASFUJEMA. Todos os direitos reservados.</span>
+        <span>Feito com pelo bem do Maranhão</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Instituto Semeando Vidas — ASFUJEMA. Todos os direitos reservados.</span>
-      <span>Feito com pelo bem do Maranhão</span>
-    </div>
-  </div>
-</footer>
+  </footer>
+  
 <script src="global.js"></script>
-  <script src="emoji-replace.js"></script>
+<script src="emoji-replace.js"></script>
 </body>
 </html>

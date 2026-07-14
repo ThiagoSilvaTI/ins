@@ -6,51 +6,145 @@
   <title>Instituto Semeando Vidas</title>
   <link rel="stylesheet" href="global.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Ícones em tamanho pequeno e consistente */
+    .icon-sm {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .icon-md {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .info-icon .icon {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+    .social-btn .icon {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+    .topbar .icon-sm {
+      width: 14px;
+      height: 14px;
+      margin-right: 4px;
+    }
+    .topbar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .topbar span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .info-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: linear-gradient(135deg, var(--blue-pale), var(--green-pale));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--blue);
+    }
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-pale), var(--green-pale));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .social-btn:hover {
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 16px rgba(21,101,192,0.3);
+    }
+  </style>
 </head>
 <body>
   <div class="topbar">
-  <span>📍 Maranhão, Brasil</span>
-  <span>
-    <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a> &nbsp;|&nbsp;
-    <a href="contato.html" onclick="navigate('contato')">Apoie nossa causa</a>
-  </span>
-</div>
-
-<header>
-  <a class="logo" href="#" onclick="navigate('home')" style="text-decoration: none;">
-  <div class="logo-isvi">
-    <div class="logo-isvi-mark">
-      <span class="isvi-text">ISVI</span>
-      <div class="isvi-divider"></div>
-    </div>
-    <div class="logo-isvi-text">
-      <span class="instituto-text">instituto</span>
-      <span class="semeando-text">semeando vidas</span>
-    </div>
+    <span>
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+      Maranhão, Brasil
+    </span>
+    <span>
+      <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7.75 2h8.5C19.06 2 22 4.94 22 8.25v7.5C22 19.06 19.06 22 15.75 22h-8.5C4.94 22 2 19.06 2 15.75v-7.5C2 4.94 4.94 2 7.75 2zM17.5 5.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5S19 7.83 19 7s-.67-1.5-1.5-1.5zm-5.5 1C9.01 6.5 6.5 9.01 6.5 12s2.51 5.5 5.5 5.5 5.5-2.51 5.5-5.5-2.51-5.5-5.5-5.5zm0 2.75c1.52 0 2.75 1.23 2.75 2.75s-1.23 2.75-2.75 2.75-2.75-1.23-2.75-2.75 1.23-2.75 2.75-2.75z"/>
+        </svg>
+        Instagram
+      </a>
+      &nbsp;|&nbsp;
+      <a href="contato.html" onclick="navigate('contato')">
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        Apoie nossa causa
+      </a>
+    </span>
   </div>
-</a>
-  <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-  <nav>
-  <a href="index.html">Início</a>
-  <div class="dropdown">
-    <button class="dropdown-btn">
-      Sobre <span class="arrow">▼</span>
-    </button>
-    <div class="dropdown-content">
-      <a href="sobre.html">Quem Somos</a>
-      <a href="equipe.html">Nossa Equipe</a>
-      <a href="diretor.html">Fala do Presidente</a>
-      <a href="estatuto ISVI.pdf" target="_blank">Estatuto</a>
-    </div>
-  </div>
-  <a href="notícias.html">Notícias</a>
-  <a href="projetos.html">Projetos</a>
-  <a href="apoiadores.html">Apoiadores</a>
-  <a href="contato.html" class="nav-cta">Contato</a>
-</nav>
-</header>
 
-    <div class="contato-hero-section">
+  <header>
+    <a class="logo" href="#" onclick="navigate('home')" style="text-decoration: none;">
+      <div class="logo-isvi">
+        <div class="logo-isvi-mark">
+          <span class="isvi-text">ISVI</span>
+          <div class="isvi-divider"></div>
+        </div>
+        <div class="logo-isvi-text">
+          <span class="instituto-text">instituto</span>
+          <span class="semeando-text">semeando vidas</span>
+        </div>
+      </div>
+    </a>
+    <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav>
+      <a href="index.html">Início</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">
+          Sobre <span class="arrow">▼</span>
+        </button>
+        <div class="dropdown-content">
+          <a href="sobre.html">Quem Somos</a>
+          <a href="equipe.html">Nossa Equipe</a>
+          <a href="diretor.html">Fala do Presidente</a>
+          <a href="estatuto ISVI.pdf" target="_blank">Estatuto</a>
+        </div>
+      </div>
+      <a href="notícias.html">Notícias</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="apoiadores.html">Apoiadores</a>
+      <a href="contato.html" class="nav-cta">Contato</a>
+    </nav>
+  </header>
+
+  <div class="contato-hero-section">
     <div style="max-width:1200px;margin:0 auto">
       <div class="section-label">Fale conosco</div>
       <h1 style="font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,48px);margin-bottom:12px;color:var(--dark)">Entre em contato</h1>
@@ -65,28 +159,47 @@
         <p>Se você quer apoiar o projeto, fazer uma parceria institucional, ser voluntário ou simplesmente saber mais sobre nosso trabalho, entre em contato. Respondemos em até 48 horas.</p>
 
         <div class="info-item">
-          <div class="info-icon">📍</div>
+          <div class="info-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </div>
           <div class="info-text">
             <h4>Endereço</h4>
             <p>São Luís, Maranhão — Brasil</p>
           </div>
         </div>
+
         <div class="info-item">
-          <div class="info-icon"></div>
+          <div class="info-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7.75 2h8.5C19.06 2 22 4.94 22 8.25v7.5C22 19.06 19.06 22 15.75 22h-8.5C4.94 22 2 19.06 2 15.75v-7.5C2 4.94 4.94 2 7.75 2zM17.5 5.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5S19 7.83 19 7s-.67-1.5-1.5-1.5zm-5.5 1C9.01 6.5 6.5 9.01 6.5 12s2.51 5.5 5.5 5.5 5.5-2.51 5.5-5.5-2.51-5.5-5.5-5.5zm0 2.75c1.52 0 2.75 1.23 2.75 2.75s-1.23 2.75-2.75 2.75-2.75-1.23-2.75-2.75 1.23-2.75 2.75-2.75z"/>
+            </svg>
+          </div>
           <div class="info-text">
             <h4>Instagram</h4>
             <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">@semeandovidas.ma</a>
           </div>
         </div>
+
         <div class="info-item">
-          <div class="info-icon"></div>
+          <div class="info-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>
+            </svg>
+          </div>
           <div class="info-text">
             <h4>Site da ASFUJEMA</h4>
             <a href="https://asfujema.org.br" target="_blank">asfujema.org.br</a>
           </div>
         </div>
+
         <div class="info-item">
-          <div class="info-icon"></div>
+          <div class="info-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+            </svg>
+          </div>
           <div class="info-text">
             <h4>Atendimento</h4>
             <p>Segunda a Sexta, das 8h às 17h</p>
@@ -96,10 +209,26 @@
         <div>
           <h4 style="font-size:14px;font-weight:600;margin-bottom:14px">Redes Sociais</h4>
           <div class="social-links">
-            <a class="social-btn" href="https://www.instagram.com/semeandovidas.ma/" target="_blank">📸</a>
-            <a class="social-btn" href="#" target="_blank"></a>
-            <a class="social-btn" href="#" target="_blank"></a>
-            <a class="social-btn" href="#" target="_blank"></a>
+            <a class="social-btn" href="https://www.instagram.com/semeandovidas.ma/" target="_blank">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.75 2h8.5C19.06 2 22 4.94 22 8.25v7.5C22 19.06 19.06 22 15.75 22h-8.5C4.94 22 2 19.06 2 15.75v-7.5C2 4.94 4.94 2 7.75 2zM17.5 5.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5S19 7.83 19 7s-.67-1.5-1.5-1.5zm-5.5 1C9.01 6.5 6.5 9.01 6.5 12s2.51 5.5 5.5 5.5 5.5-2.51 5.5-5.5-2.51-5.5-5.5-5.5zm0 2.75c1.52 0 2.75 1.23 2.75 2.75s-1.23 2.75-2.75 2.75-2.75-1.23-2.75-2.75 1.23-2.75 2.75-2.75z"/>
+              </svg>
+            </a>
+            <a class="social-btn" href="#" target="_blank">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
+              </svg>
+            </a>
+            <a class="social-btn" href="#" target="_blank">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+              </svg>
+            </a>
+            <a class="social-btn" href="#" target="_blank">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -133,59 +262,59 @@
         </div>
         <div class="form-group"><label>Organização / Escola (opcional)</label><input type="text" id="organizacao" placeholder="Nome da instituição"></div>
         <div class="form-group"><label>Mensagem *</label><textarea id="mensagem" placeholder="Conte-nos como podemos ajudar ou como você deseja contribuir..."></textarea></div>
-        <button class="btn btn-green" type="button" onclick="enviarWhats()">Enviar mensagem </button>
+        <button class="btn btn-green" type="button" onclick="enviarWhats()">Enviar mensagem</button>
       </div>
     </div>
-        <div class="mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63774.93028874317!2d-44.3783048783203!3d-2.5287257999999877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7f68edd30a47a1d%3A0x8e0588d077d24e87!2sASFUJEMA%20Associa%C3%A7%C3%A3o%20dos%20Funcion%C3%A1rios%20da%20Justi%C3%A7a%20do%20Estado%20do%20Maranh%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1772981612882!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      <span class="nome" style="font: size 20px">Instituto Semeando Vidas — ASFUJEMA</span>
-    </div>
-  </div>
-</div>
 
-<footer>
-  <div style="max-width:1200px;margin:0 auto">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo" style="padding:0;margin-bottom:16px">
-          <div class="logo-icon"></div>
-          <div class="logo-text"><strong>Semeando Vidas</strong><span>Instituto — ASFUJEMA</span></div>
-        </div>
-        <p>Promovendo prevenção ao uso de drogas, educação e transformação social no Maranhão desde 2012. Cada semente plantada é uma vida transformada.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navegação</h4>
-        <a href="index.html">Início</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="notícias.html">Notícias</a>
-    <a href="projetos.html">Projetos</a>
-    <a href="apoiadores.html">Apoiadores</a>
-    <a href="contato.html">Contato</a>
-      </div>
-      <div class="footer-col">
-        <h4>Projetos</h4>
-        <a href="projetos.html">Palestras Educativas</a>
-        <a href="projetos.html">Arte que Transforma</a>
-        <a href="projetos.html">Fortalecendo Famílias</a>
-        <a href="projetos.html">Mente Saudável</a>
-        <a href="projetos.html">Multiplicadores</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contato</h4>
-        <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a>
-        <a href="https://asfujema.org.br" target="_blank">ASFUJEMA</a>
-        <a href="contato.html">Enviar mensagem</a>
-        <a href="contato.html">Seja voluntário</a>
-      </div>
+    <div class="mapa">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63774.93028874317!2d-44.3783048783203!3d-2.5287257999999877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7f68edd30a47a1d%3A0x8e0588d077d24e87!2sASFUJEMA%20Associa%C3%A7%C3%A3o%20dos%20Funcion%C3%A1rios%20da%20Justi%C3%A7a%20do%20Estado%20do%20Maranh%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1772981612882!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 Instituto Semeando Vidas — ASFUJEMA. Todos os direitos reservados.</span>
-      <span>Feito com pelo bem do Maranhão</span>
-    </div>
+    <span class="nome" style="font-size:20px">Instituto Semeando Vidas — ASFUJEMA</span>
   </div>
-</footer>
-<script src="global.js"></script>
+
+  <footer>
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="padding:0;margin-bottom:16px">
+            <div class="logo-icon"></div>
+            <div class="logo-text"><strong>Semeando Vidas</strong><span>Instituto — ASFUJEMA</span></div>
+          </div>
+          <p>Promovendo prevenção ao uso de drogas, educação e transformação social no Maranhão desde 2012. Cada semente plantada é uma vida transformada.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="notícias.html">Notícias</a>
+          <a href="projetos.html">Projetos</a>
+          <a href="apoiadores.html">Apoiadores</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div class="footer-col">
+          <h4>Projetos</h4>
+          <a href="projetos.html">Palestras Educativas</a>
+          <a href="projetos.html">Arte que Transforma</a>
+          <a href="projetos.html">Fortalecendo Famílias</a>
+          <a href="projetos.html">Mente Saudável</a>
+          <a href="projetos.html">Multiplicadores</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a>
+          <a href="https://asfujema.org.br" target="_blank">ASFUJEMA</a>
+          <a href="contato.html">Enviar mensagem</a>
+          <a href="contato.html">Seja voluntário</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Instituto Semeando Vidas — ASFUJEMA. Todos os direitos reservados.</span>
+        <span>Feito com pelo bem do Maranhão</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="global.js"></script>
   <script src="emoji-replace.js"></script>
 </body>
 </html>

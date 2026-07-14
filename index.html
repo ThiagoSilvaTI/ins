@@ -6,6 +6,15 @@
 <title>Instituto Semeando Vidas</title>
 <link rel="stylesheet" href="global.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  .icon-sm { width: 16px; height: 16px; display: inline-block; vertical-align: middle; flex-shrink: 0; }
+  .icon-md { width: 20px; height: 20px; display: inline-block; vertical-align: middle; flex-shrink: 0; }
+  .icon-lg { width: 28px; height: 28px; display: inline-block; vertical-align: middle; flex-shrink: 0; }
+  .topbar .icon-sm { margin-right: 4px; }
+  .topbar a, .topbar span { display: inline-flex; align-items: center; gap: 4px; }
+  .stat .icon-lg { margin-bottom: 8px; }
+  .missao-icon .icon { width: 40px; height: 40px; }
+</style>
 </head>
 <script src="news-manager.js"></script>
 <script>
@@ -28,7 +37,12 @@ function renderHomeNews() {
         <span class="news-tag">${NewsManager.getCategoryName(item.category)}</span>
         <h3>${item.title.substring(0, 60)}${item.title.length > 60 ? '...' : ''}</h3>
         <p>${(item.summary || '').substring(0, 100)}${(item.summary || '').length > 100 ? '...' : ''}</p>
-        <div class="news-card-meta">📅 ${NewsManager.formatNewsDate(item.date)}</div>
+        <div class="news-card-meta">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
+          </svg>
+          ${NewsManager.formatNewsDate(item.date)}
+        </div>
       </div>
     </div>
   `).join('');
@@ -63,10 +77,26 @@ window.addEventListener('storage', () => renderHomeNews());
 <body>
 
 <div class="topbar">
-  <span>📍 Maranhão, Brasil</span>
   <span>
-    <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a> &nbsp;|&nbsp;
-    <a href="contato.html" onclick="navigate('contato')">Apoie nossa causa</a>
+    <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+    </svg>
+    Maranhão, Brasil
+  </span>
+  <span>
+    <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7.75 2h8.5C19.06 2 22 4.94 22 8.25v7.5C22 19.06 19.06 22 15.75 22h-8.5C4.94 22 2 19.06 2 15.75v-7.5C2 4.94 4.94 2 7.75 2zM17.5 5.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5S19 7.83 19 7s-.67-1.5-1.5-1.5zm-5.5 1C9.01 6.5 6.5 9.01 6.5 12s2.51 5.5 5.5 5.5 5.5-2.51 5.5-5.5-2.51-5.5-5.5-5.5zm0 2.75c1.52 0 2.75 1.23 2.75 2.75s-1.23 2.75-2.75 2.75-2.75-1.23-2.75-2.75 1.23-2.75 2.75-2.75z"/>
+      </svg>
+      Instagram
+    </a>
+    &nbsp;|&nbsp;
+    <a href="contato.html" onclick="navigate('contato')">
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+      Apoie nossa causa
+    </a>
   </span>
 </div>
 
@@ -105,18 +135,42 @@ window.addEventListener('storage', () => renderHomeNews());
 </header>
 
 <section class="hero" style="position: relative; min-height: 600px;">
-    <!-- Imagem de fundo com saturação ajustada para ficar mais viva -->
     <div style="position: absolute; inset: 0; background-image: url('https://www.image2url.com/r2/default/images/1777845191691-59853890-4bdc-4d05-b31f-cfb822a6c167.jpeg'); background-size: cover; background-position: center 30%; mix-blend-mode: normal;"></div>
     <div class="hero-pattern"></div>
     <div class="hero-content" style="position: relative; z-index: 2;">
+      
     </div>
   </section>
 
   <div class="stats-bar">
-    <div class="stat"><div class="stat-num">+5.000</div><div class="stat-label">Pessoas alcançadas</div></div>
-    <div class="stat"><div class="stat-num">+200</div><div class="stat-label">Palestras realizadas</div></div>
-    <div class="stat"><div class="stat-num">+50</div><div class="stat-label">Escolas parceiras</div></div>
-    <div class="stat"><div class="stat-num">+10</div><div class="stat-label">Anos de atuação</div></div>
+    <div class="stat">
+      <svg class="icon-lg" viewBox="0 0 24 24" fill="#FFB74D">
+        <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+      </svg>
+      <div class="stat-num">+5.000</div>
+      <div class="stat-label">Pessoas alcançadas</div>
+    </div>
+    <div class="stat">
+      <svg class="icon-lg" viewBox="0 0 24 24" fill="#FFB74D">
+        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
+      </svg>
+      <div class="stat-num">+200</div>
+      <div class="stat-label">Palestras realizadas</div>
+    </div>
+    <div class="stat">
+      <svg class="icon-lg" viewBox="0 0 24 24" fill="#FFB74D">
+        <path d="M12 3L1 9l11 6 11-6-11-6zm0 10.25L3.53 9.5 12 5.75l8.47 3.75L12 13.25zM3 12v6l9 5 9-5v-6l-9 5-9-5z"/>
+      </svg>
+      <div class="stat-num">+50</div>
+      <div class="stat-label">Escolas parceiras</div>
+    </div>
+    <div class="stat">
+      <svg class="icon-lg" viewBox="0 0 24 24" fill="#FFB74D">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      <div class="stat-num">+10</div>
+      <div class="stat-label">Anos de atuação</div>
+    </div>
   </div>
 
   <div class="section">
@@ -129,7 +183,7 @@ window.addEventListener('storage', () => renderHomeNews());
         <h2>Agenda para o desenvolvimento sustentável</h2>
         <p>O Projeto Semeando Vidas realiza um ciclo contínuo de palestras educativas em escolas, espaços comunitários e eventos institucionais. As atividades incluem apresentações, rodas de conversa e ações de conscientização voltadas principalmente para crianças, adolescentes e suas famílias.</p>
         <br>
-        <p>Desenvolvido pela ASFUJEMA, o projeto promove ações educativas, sociais e comunitárias que buscam transformar positivamente a sociedade por meio da informação, da arte e do diálogo.</p>
+        <p>Desenvolvido pelo Instituto Semeando Vidas em parceria com a Asfujema, o projeto promove ações educativas, sociais e comunitárias que buscam transformar positivamente a sociedade por meio da informação, da arte e do diálogo.</p>
       </div>
       <div class="side-cards">
         <div class="side-card">
@@ -149,108 +203,16 @@ window.addEventListener('storage', () => renderHomeNews());
   </div>
 
   <hr class="divider">
-  <!-- Seção de notícias dinâmicas na página inicial -->
-<div class="section">
-  <div class="section-label">Últimas notícias</div>
-  <h2 class="section-title">Acompanhe nossas ações</h2>
-  <div id="homeNewsGrid" class="news-grid">
-    <div style="text-align: center; padding: 40px;">Carregando notícias...</div>
+
+  <div class="section">
+    <div class="section-label">Últimas notícias</div>
+    <h2 class="section-title">Acompanhe nossas ações</h2>
+    <div id="homeNewsGrid" class="news-grid">
+      <div style="text-align: center; padding: 40px;">Carregando notícias...</div>
+    </div>
   </div>
-</div>
 
-<script>
-  function loadNews() {
-    const news = localStorage.getItem('institute_news');
-    return news ? JSON.parse(news) : [];
-  }
-
-  function getCategoryName(category) {
-    const categories = {
-      'educacao': 'Educação',
-      'prevencao': 'Prevenção',
-      'comunidade': 'Comunidade',
-      'eventos': 'Eventos',
-      'parcerias': 'Parcerias'
-    };
-    return categories[category] || category;
-  }
-
-  function formatDate(dateStr) {
-    if (dateStr) return dateStr;
-    const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-    const date = new Date();
-    return `${months[date.getMonth()]} ${date.getFullYear()}`;
-  }
-
-  function renderHomeNews() {
-    const container = document.getElementById('homeNewsGrid');
-    const news = loadNews();
-    const latestNews = news.slice(0, 3);
-    
-    if (latestNews.length === 0) {
-      container.innerHTML = `
-        <div style="text-align: center; padding: 40px; grid-column: 1/-1;">
-          <p style="color: var(--gray);">Nenhuma notícia cadastrada ainda. Acesse o painel admin para adicionar.</p>
-        </div>
-      `;
-      return;
-    }
-    
-    container.innerHTML = latestNews.map((item, idx) => `
-      <div class="news-card" onclick="verNoticia(${idx})">
-        <img src="${item.image || 'https://via.placeholder.com/400x200?text=Notícia'}" alt="${item.title}" style="width:100%; height:200px; object-fit:cover;">
-        <div class="news-card-body">
-          <span class="news-tag">${getCategoryName(item.category)}</span>
-          <h3>${item.title}</h3>
-          <p>${item.summary.substring(0, 100)}${item.summary.length > 100 ? '...' : ''}</p>
-          <div class="news-card-meta">📅 ${formatDate(item.date)}</div>
-        </div>
-      </div>
-    `).join('');
-  }
-  
-  // Ver notícia (mesma função do notícias.html)
-  window.verNoticia = function(index) {
-    const news = loadNews();
-    const item = news[index];
-    if (!item) return;
-    
-    const modal = document.createElement('div');
-    modal.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      animation: fadeIn 0.3s ease;
-    `;
-    
-    modal.innerHTML = `
-      <div style="background: white; max-width: 700px; width: 90%; max-height: 90%; overflow-y: auto; border-radius: 28px; padding: 40px; position: relative;">
-        <button onclick="this.closest('div').remove()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 28px; cursor: pointer; color: var(--gray);">&times;</button>
-        ${item.image ? `<img src="${item.image}" alt="${item.title}" style="width:100%; border-radius: 20px; margin-bottom: 24px;">` : ''}
-        <span class="news-tag" style="margin-bottom: 12px;">${getCategoryName(item.category)}</span>
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 16px; color: var(--blue);">${item.title}</h2>
-        <div class="news-card-meta" style="margin-bottom: 24px;">📅 ${formatDate(item.date)}</div>
-        <div style="line-height: 1.8; color: var(--dark);">${item.content || item.summary}</div>
-      </div>
-    `;
-    
-    document.body.appendChild(modal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.remove();
-    });
-  };
-  
-  renderHomeNews();
-</script>
-
-  <!-- Apoiadores strip on home -->
+<!-- Apoiadores strip on home -->
   <div class="apoiadores-strip">
     <div class="apoiadores-strip-inner">
       <div class="apoiadores-strip-header">
@@ -280,19 +242,23 @@ window.addEventListener('storage', () => renderHomeNews());
     </div>
   </div>
 
+
   <div class="cta-band">
     <h2>Você pode fazer a diferença</h2>
     <p>Seja um voluntário, parceiro ou apoiador. Juntos, podemos semear mais vidas.</p>
     <a class="btn btn-dark" href="contato.html">Entre em contato conosco</a>
   </div>
-</div>
 
 <footer>
   <div style="max-width:1200px;margin:0 auto">
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo" style="padding:0;margin-bottom:16px">
-          <div class="logo-icon"></div>
+          <div class="logo-icon">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="#2e7d32">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
           <div class="logo-text"><strong>Semeando Vidas</strong><span>Instituto — ASFUJEMA</span></div>
         </div>
         <p>Promovendo prevenção ao uso de drogas, educação e transformação social no Maranhão desde 2012. Cada semente plantada é uma vida transformada.</p>
@@ -300,11 +266,11 @@ window.addEventListener('storage', () => renderHomeNews());
       <div class="footer-col">
         <h4>Navegação</h4>
         <a href="index.html">Início</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="notícias.html">Notícias</a>
-    <a href="projetos.html">Projetos</a>
-    <a href="apoiadores.html">Apoiadores</a>
-    <a href="contato.html">Contato</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="notícias.html">Notícias</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="apoiadores.html">Apoiadores</a>
+        <a href="contato.html">Contato</a>
       </div>
       <div class="footer-col">
         <h4>Projetos</h4>
@@ -329,6 +295,6 @@ window.addEventListener('storage', () => renderHomeNews());
   </div>
 </footer>
 <script src="global.js"></script>
-  <script src="emoji-replace.js"></script>
+<script src="emoji-replace.js"></script>
 </body>
 </html>

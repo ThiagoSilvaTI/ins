@@ -1,50 +1,67 @@
 // ============================================
 // MENU HAMBURGER - COMPLETO
 // ============================================
+// ============================================
+// DROPDOWN MOBILE - VERSÃO CORRIGIDA
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
-  var menuToggle = document.querySelector('.menu-toggle');
-  var nav = document.querySelector('nav');
+  var dropdowns = document.querySelectorAll('.dropdown');
   
-  if (menuToggle && nav) {
-    menuToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      menuToggle.classList.toggle('active');
-      nav.classList.toggle('nav-open');
-      document.body.style.overflow = nav.classList.contains('nav-open') ? 'hidden' : '';
-    });
-
-    // Fechar menu ao clicar em qualquer link
-    nav.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
+  dropdowns.forEach(function(dropdown) {
+    var btn = dropdown.querySelector('.dropdown-btn');
+    
+    if (btn) {
+      // Remove qualquer listener anterior (evita duplicação)
+      btn.removeEventListener('click', handleDropdownClick);
+      btn.addEventListener('click', handleDropdownClick);
+      
+      function handleDropdownClick(e) {
+        // Só executa no mobile
         if (window.innerWidth <= 768) {
-          closeMenu();
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Fecha outros dropdowns abertos
+          dropdowns.forEach(function(d) {
+            if (d !== dropdown && d.classList.contains('active')) {
+              d.classList.remove('active');
+            }
+          });
+          
+          // Alterna o dropdown atual
+          dropdown.classList.toggle('active');
         }
+      }
+    }
+  });
+  
+  // Fecha dropdowns ao clicar fora
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      if (!e.target.closest('.dropdown')) {
+        dropdowns.forEach(function(d) {
+          d.classList.remove('active');
+        });
+      }
+    }
+  });
+  
+  // Fecha dropdowns ao redimensionar para desktop
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      dropdowns.forEach(function(d) {
+        d.classList.remove('active');
       });
-    });
-
-    // Fechar menu ao clicar fora
-    document.addEventListener('click', function(e) {
-      if (window.innerWidth <= 768 && 
-          !e.target.closest('header') && 
-          !e.target.closest('.menu-toggle')) {
-        closeMenu();
-      }
-    });
-
-    // Reset ao redimensionar
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 768) {
-        closeMenu();
-      }
-    });
+    }
+  });
+});
 
     function closeMenu() {
       menuToggle.classList.remove('active');
       nav.classList.remove('nav-open');
       document.body.style.overflow = '';
     }
-  }
-});
+  ;
 
 // ============================================
 // DROPDOWN MOBILE

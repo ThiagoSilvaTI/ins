@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="global.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    .icon-sm { width: 16px; height: 16px; display: inline-block; vertical-align: middle; flex-shrink: 0; }
+    .icon-md { width: 20px; height: 20px; display: inline-block; vertical-align: middle; flex-shrink: 0; }
+    .icon-lg { width: 28px; height: 28px; display: inline-block; vertical-align: middle; flex-shrink: 0; }
+    .topbar .icon-sm { margin-right: 4px; }
+    .topbar a, .topbar span { display: inline-flex; align-items: center; gap: 4px; }
     .hidden-news { display: none !important; }
     .noticia-destaque {
       background: linear-gradient(135deg, var(--blue-pale), var(--green-pale));
@@ -42,6 +47,9 @@
     .noticia-destaque .news-card-meta {
       font-size: 13px;
       color: #999;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
     .empty-news {
       text-align: center;
@@ -107,7 +115,9 @@
       padding: 20px;
     }
     .news-tag {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       background: linear-gradient(135deg, var(--blue-pale), var(--green-pale));
       color: var(--blue);
       font-size: 11px;
@@ -134,6 +144,9 @@
       font-size: 12px;
       color: #999;
       margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
     .section-label {
       font-size: 12px;
@@ -169,6 +182,9 @@
       color: var(--gray);
       transition: all var(--transition);
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .filter-btn.active, .filter-btn:hover {
       background: linear-gradient(135deg, var(--blue), var(--green));
@@ -240,10 +256,26 @@
 </head>
 <body>
   <div class="topbar">
-    <span>📍 Maranhão, Brasil</span>
     <span>
-      <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">Instagram</a> &nbsp;|&nbsp;
-      <a href="contato.html">Apoie nossa causa</a>
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+      Maranhão, Brasil
+    </span>
+    <span>
+      <a href="https://www.instagram.com/semeandovidas.ma/" target="_blank">
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7.75 2h8.5C19.06 2 22 4.94 22 8.25v7.5C22 19.06 19.06 22 15.75 22h-8.5C4.94 22 2 19.06 2 15.75v-7.5C2 4.94 4.94 2 7.75 2zM17.5 5.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5S19 7.83 19 7s-.67-1.5-1.5-1.5zm-5.5 1C9.01 6.5 6.5 9.01 6.5 12s2.51 5.5 5.5 5.5 5.5-2.51 5.5-5.5-2.51-5.5-5.5-5.5zm0 2.75c1.52 0 2.75 1.23 2.75 2.75s-1.23 2.75-2.75 2.75-2.75-1.23-2.75-2.75 1.23-2.75 2.75-2.75z"/>
+        </svg>
+        Instagram
+      </a>
+      &nbsp;|&nbsp;
+      <a href="contato.html">
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        Apoie nossa causa
+      </a>
     </span>
   </div>
 
@@ -288,12 +320,42 @@
   </div>
 
   <div class="filter-bar">
-    <button class="filter-btn active" data-filter="todos">Todos</button>
-    <button class="filter-btn" data-filter="educacao">📚 Educação</button>
-    <button class="filter-btn" data-filter="prevencao">🛡️ Prevenção</button>
-    <button class="filter-btn" data-filter="comunidade">🏘️ Comunidade</button>
-    <button class="filter-btn" data-filter="eventos">🎉 Eventos</button>
-    <button class="filter-btn" data-filter="parcerias">🤝 Parcerias</button>
+    <button class="filter-btn active" data-filter="todos">
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+      </svg>
+      Todos
+    </button>
+    <button class="filter-btn" data-filter="educacao">
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+      Educação
+    </button>
+    <button class="filter-btn" data-filter="prevencao">
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5L12 1z"/>
+      </svg>
+      Prevenção
+    </button>
+    <button class="filter-btn" data-filter="comunidade">
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+      Comunidade
+    </button>
+    <button class="filter-btn" data-filter="eventos">
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
+      </svg>
+      Eventos
+    </button>
+    <button class="filter-btn" data-filter="parcerias">
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+      </svg>
+      Parcerias
+    </button>
   </div>
 
   <div class="section" style="padding-top:10px">
@@ -308,7 +370,9 @@
 
     <div id="noticiasContainer">
       <div class="empty-news">
-        <span style="font-size: 48px;">📰</span>
+        <svg class="icon-lg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z"/>
+        </svg>
         <h3>Carregando notícias...</h3>
       </div>
     </div>
@@ -319,7 +383,11 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="logo" style="padding:0;margin-bottom:16px">
-            <div class="logo-icon"></div>
+            <div class="logo-icon">
+              <svg class="icon-lg" viewBox="0 0 24 24" fill="#2e7d32">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
             <div class="logo-text"><strong>Semeando Vidas</strong><span>Instituto — ASFUJEMA</span></div>
           </div>
           <p>Promovendo prevenção ao uso de drogas, educação e transformação social no Maranhão desde 2012.</p>
@@ -422,7 +490,12 @@
           ${hasImage ? `<img src="${imageSrc}" alt="${item.title}" style="width:100%; border-radius: 20px; margin-bottom: 24px; max-height: 300px; object-fit: cover;">` : ''}
           <span class="news-tag" style="margin-bottom: 12px; display: inline-block;">${getCategoryName(item.category)}</span>
           <h2 style="font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 16px; color: var(--blue);">${item.title}</h2>
-          <div class="news-card-meta" style="margin-bottom: 24px;">📅 ${formatDate(item.date)}</div>
+          <div class="news-card-meta" style="margin-bottom: 24px;">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
+            </svg>
+            ${formatDate(item.date)}
+          </div>
           <div style="line-height: 1.8; color: var(--dark); white-space: pre-wrap;">${(item.content || item.summary || '').replace(/\n/g, '<br>')}</div>
         </div>
       `;
@@ -440,12 +513,12 @@
       const container = document.getElementById('noticiasContainer');
       const news = loadNews();
       
-      console.log('📊 Total de notícias:', news.length);
-      
       if (news.length === 0) {
         container.innerHTML = `
           <div class="empty-news">
-            <span style="font-size: 48px;">📰</span>
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z"/>
+            </svg>
             <h3 style="margin-top: 16px;">Nenhuma notícia cadastrada ainda</h3>
             <p>Acesse o <a href="admin.html" style="color: var(--blue);">painel administrativo</a> para adicionar notícias.</p>
           </div>
@@ -456,18 +529,26 @@
       const featured = news[0];
       const remaining = news.slice(1);
       
-      // Verifica se a notícia em destaque tem imagem
       const hasFeaturedImage = featured.image && featured.image.length > 0;
       const featuredImageSrc = hasFeaturedImage ? featured.image : 'https://via.placeholder.com/700x350?text=📰+Semeando+Vidas';
       
       let html = `
-        <!-- NOTÍCIA EM DESTAQUE COM IMAGEM -->
         <div class="noticia-destaque" data-category="${featured.category}" onclick="verNoticia(${featured.id})">
           ${hasFeaturedImage ? `<img src="${featuredImageSrc}" alt="${featured.title}" class="destaque-image" onerror="this.style.display='none'">` : ''}
-          <span class="news-tag" style="display: inline-block; margin-bottom: 12px;">⭐ Destaque · ${getCategoryName(featured.category)}</span>
+          <span class="news-tag" style="display: inline-flex; align-items: center; gap: 6px; margin-bottom: 12px;">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            Destaque · ${getCategoryName(featured.category)}
+          </span>
           <h3>${featured.title}</h3>
           <div class="summary-text">${(featured.summary || '').substring(0, 250)}${(featured.summary || '').length > 250 ? '...' : ''}</div>
-          <div class="news-card-meta">📅 ${formatDate(featured.date)}</div>
+          <div class="news-card-meta">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
+            </svg>
+            ${formatDate(featured.date)}
+          </div>
         </div>
         
         <div class="section-label" style="margin-top: 40px;">Todas as publicações</div>
@@ -483,10 +564,15 @@
           <div class="news-card" data-category="${item.category}" onclick="verNoticia(${item.id})">
             <img src="${imageSrc}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200?text=📰'">
             <div class="news-card-body">
-              <span class="news-tag" style="display: inline-block; margin-bottom: 12px;">${getCategoryName(item.category)}</span>
+              <span class="news-tag" style="display: inline-flex; align-items: center; gap: 6px; margin-bottom: 12px;">${getCategoryName(item.category)}</span>
               <h3 style="font-size: 18px; margin-bottom: 10px;">${item.title}</h3>
               <div class="summary-text">${(item.summary || '').substring(0, 120)}${(item.summary || '').length > 120 ? '...' : ''}</div>
-              <div class="news-card-meta" style="margin-top: 16px;">📅 ${formatDate(item.date)}</div>
+              <div class="news-card-meta">
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
+                </svg>
+                ${formatDate(item.date)}
+              </div>
             </div>
           </div>
         `;
@@ -541,14 +627,12 @@
     // INICIALIZAÇÃO
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('🚀 Página de notícias carregada');
       renderNews();
       setupFilters();
     });
     
     window.addEventListener('storage', function(e) {
       if (e.key === 'institute_news') {
-        console.log('🔄 Notícias atualizadas em outra aba, recarregando...');
         renderNews();
       }
     });
