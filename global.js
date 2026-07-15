@@ -98,7 +98,7 @@
         // Só executa no mobile
         if (window.innerWidth <= 768) {
           e.preventDefault();
-          e.stopPropagation();
+          e.stopImmediatePropagation();
 
           // Fecha outros dropdowns
           dropdowns.forEach(function(d) {

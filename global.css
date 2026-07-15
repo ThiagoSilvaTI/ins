@@ -369,24 +369,18 @@ nav a.active {
 
   .dropdown-content {
     position: static;
-    box-shadow: none;
-    border: none;
+    display: none;
     background: var(--gray-light);
+    border: none;
     border-radius: 12px;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    max-height: 0;
-    padding: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s ease;
-    margin-top: 0;
-  }
-
-  .dropdown.active .dropdown-content {
-    max-height: 400px;
+    box-shadow: none;
+    margin-top: 6px;
     padding: 6px 0;
-  }
+}
+
+.dropdown.active .dropdown-content {
+    display: block;
+}
 
   .dropdown-content a {
     padding: 10px 20px;

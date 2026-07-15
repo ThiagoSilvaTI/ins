@@ -342,8 +342,8 @@
         <button class="dropdown-btn">Sobre <span class="arrow">▼</span></button>
         <div class="dropdown-content">
           <a href="sobre.html">Quem Somos</a>
-          <a href="diretor.html">Fala do Presidente</a>
           <a href="equipe.html">Nossa Equipe</a>
+          <a href="diretor.html">Fala do Presidente</a>
           <a href="estatuto ISVI.pdf" target="_blank">Estatuto</a>
         </div>
       </div>
@@ -470,7 +470,7 @@
         id: 5,
         name: "Francisco do Espírito Santo",
         role: "Diretor Pedagógico",
-        bio: "Idealizador do Instituto Semeando Vidas, Sandro dedica sua vida à prevenção às drogas e à promoção da cidadania. Lidera articulações institucionais e fortalece parcerias estratégicas.",
+        bio: "Dedicando sua experiência e compromisso à construção de ações educativas que promovem cidadania, prevenção às drogas, valorização da vida e fortalecimento dos vínculos familiares e comunitários.",
         image: "https://www.image2url.com/r2/default/images/1783565444291-2bd12f99-6d13-436f-b209-d389002c6284.png",
         instagram: "https://instagram.com/semeandovidas.ma",
         linkedin: "#",
@@ -542,19 +542,6 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       renderTeam();
-      // Ativa dropdown em dispositivos móveis (caso precise, o global.js já cuida)
-      if (document.querySelectorAll('.dropdown-btn').length) {
-        const dropdownBtns = document.querySelectorAll('.dropdown-btn');
-        dropdownBtns.forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-              e.preventDefault();
-              const parent = btn.closest('.dropdown');
-              parent.classList.toggle('active');
-            }
-          });
-        });
-      }
     });
   </script>
   <script src="global.js"></script>
